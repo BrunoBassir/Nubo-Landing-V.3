@@ -365,7 +365,7 @@ export function FAQ() {
   const items = [
     { q: '¿Cuánto cuesta usar Nubo?', a: 'Es 100% gratis para exploradores. No hay suscripciones, ni in-app purchases obligatorias. Los premios se pagan con NP que ganás caminando.' },
     { q: '¿Cómo gano Nubo Points?', a: 'Visitá un lugar asociado, escaneá su QR o subí una foto como prueba. Cada validación te suma NP y XP — los montos varían según el lugar y los desafíos activos.' },
-    { q: '¿En qué ciudades funciona?', a: 'Arrancamos en Buenos Aires, Córdoba y Rosario. Sumamos ciudades nuevas todos los meses. Si querés que llegue a la tuya, dejános tu mail al final de la página.' },
+    { q: '¿En qué ciudades funciona?', a: 'Por ahora estamos operativos principalmente en Rosario durante nuestra fase MVP, pero pronto nos vamos a expandir a CABA, Córdoba y Santa Fe city. ¡Sumate a la lista para enterarte!' },
     { q: '¿Mis datos de ubicación son privados?', a: 'Sí. Nubo solo usa tu ubicación cuando estás escaneando un QR o validando una visita. No vendemos ni compartimos datos personales — punto.' },
     { q: '¿Puedo sumar mi comercio?', a: 'Por supuesto. Solo pagás por visitas reales validadas. Hacé click en "Sumar mi comercio" y te abrimos el portal en menos de 24hs.' },
   ];

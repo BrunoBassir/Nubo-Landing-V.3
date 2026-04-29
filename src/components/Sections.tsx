@@ -23,7 +23,7 @@ export function Hero({ onCTA }: any) {
               <MapPin className="text-primary w-4 h-4 animate-bounce" />
               <span className="text-[12px] font-medium text-primary tracking-wide">Próxima recompensa a 200 m</span>
               <span className="w-1 h-1 rounded-full bg-primary/50 mx-1"></span>
-              <span className="text-[12px] font-medium text-cyan-200/70">+10k exploradores activos</span>
+              <span className="text-[12px] font-medium text-cyan-200/70">Fase MVP Activa</span>
             </div>
           </ScrollReveal>
 
@@ -67,9 +67,9 @@ export function Hero({ onCTA }: any) {
           <ScrollReveal delay={0.5}>
             <div className="mt-12 grid grid-cols-3 gap-6 max-w-lg">
               {[
-                { v: '+10k', l: 'Exploradores' },
-                { v: '320', l: 'Lugares' },
-                { v: '4.8★', l: 'Rating' },
+                { v: '+20', l: 'Lugares (Rosario)' },
+                { v: '+200', l: 'Premios canjeables' },
+                { v: 'MVP', l: 'Fase Beta' },
               ].map(s => (
                 <div key={s.l}>
                   <div className="text-2xl md:text-3xl font-bold text-primary glow-text">{s.v}</div>
