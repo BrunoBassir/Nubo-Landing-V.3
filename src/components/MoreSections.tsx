@@ -518,6 +518,7 @@ export function FinalCTA({ onCTA }: any) {
           <motion.button 
             whileHover={{ scale: 1.05, backgroundColor: 'rgba(25,204,240,0.1)' }}
             whileTap={{ scale: 0.95 }}
+            onClick={onCTA}
             className="glass-card cyber-border px-7 h-16 rounded-full font-bold text-base flex items-center justify-center gap-3 transition-all group"
           >
             <svg viewBox="0 0 24 24" className="text-primary w-6 h-6 fill-current group-hover:scale-110 transition-transform">
