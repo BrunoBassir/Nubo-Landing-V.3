@@ -1,0 +1,6 @@
+{
+  "name": "Nubo",
+  "description": "Nubo es una app para explorar la ciudad, cumplir misiones, ganar puntos (NP/XP) y canjearlos por premios reales en locales asociados.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

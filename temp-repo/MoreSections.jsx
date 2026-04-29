@@ -1,0 +1,452 @@
+/* MoreSections.jsx — Premios, Ranking, Comercios, FAQ, Footer */
+
+function PrizesShowcase() {
+  return (
+    <section data-screen-label="04 Premios" className="section-pad relative">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-5 lg:order-2 flex justify-center">
+            <div className="relative">
+              <div className="absolute -inset-12 bg-primary/20 blur-[80px] rounded-full"></div>
+              <IOSDevice width={300} height={650} dark={true}>
+                <PrizesMockup />
+              </IOSDevice>
+            </div>
+          </div>
+
+          <div className="lg:col-span-7 lg:order-1">
+            <div className="label-caps text-primary mb-3">PREMIOS REALES</div>
+            <h2 className="font-bold tracking-tight leading-[1.05]" style={{fontSize: 'clamp(2rem, 5vw, 3.6rem)'}}>
+              Cuatro maneras <br/>de <span className="gradient-text">canjear lo que ganaste</span>
+            </h2>
+            <p className="text-onSurfaceVariant mt-4 text-lg max-w-xl">
+              Tus NP no se quedan en una pantalla. Salí con vouchers, ganá en subastas o probá suerte con un cofre misterioso.
+            </p>
+
+            <div className="mt-10 grid sm:grid-cols-2 gap-3">
+              {[
+                { i: 'redeem', t: 'Vouchers', d: 'Canjeá NP por descuentos directos en cafeterías, bares y tiendas asociadas.', c: '#19ccf0' },
+                { i: 'gavel', t: 'Subastas en vivo', d: 'Pujá por gadgets, experiencias premium y productos limitados con tus NP.', c: '#19ccf0' },
+                { i: 'redeem', t: 'Mystery Chest', d: 'Abrí cofres semanales con premios al azar — desde NP extra hasta drops únicos.', c: '#f0a219' },
+                { i: 'sync_alt', t: 'Trading Market', d: 'Intercambiá fragments de premios con otros exploradores. Coleccioná y completá sets.', c: '#ffc640' },
+              ].map((p, i) => (
+                <div key={i} className="glass-card hover-lift rounded-2xl p-5 border border-white/5">
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3" style={{background: `${p.c}1a`, border: `1px solid ${p.c}55`}}>
+                    <span className="material-symbols-outlined text-[22px]" style={{color: p.c, fontVariationSettings: "'FILL' 1"}}>{p.i}</span>
+                  </div>
+                  <h3 className="font-bold text-base mb-1">{p.t}</h3>
+                  <p className="text-onSurfaceVariant text-[13px] leading-snug">{p.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CommunityRanking() {
+  return (
+    <section data-screen-label="05 Comunidad" className="section-pad relative overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" style={{maskImage: 'radial-gradient(ellipse at center, black 0%, transparent 70%)'}}></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none" style={{background: 'radial-gradient(circle, rgba(25,204,240,0.12), transparent 60%)'}}></div>
+
+      <div className="max-w-7xl mx-auto px-6 relative">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7">
+            <div className="label-caps text-primary mb-3">COMUNIDAD · RANKING SEMANAL</div>
+            <h2 className="font-bold tracking-tight leading-[1.05]" style={{fontSize: 'clamp(2rem, 5vw, 3.6rem)'}}>
+              Competí, sumá amigos<br/>
+              <span className="gradient-text">conquistá tu ciudad.</span>
+            </h2>
+            <p className="text-onSurfaceVariant mt-4 text-lg max-w-xl">
+              Cada semana se reinicia el podio. Top 3 se llevan premios reales. Invitá a tu crew y formá un club exploradores.
+            </p>
+
+            <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {[
+                { v: 'Top 3', l: 'Premios semanales' },
+                { v: 'Clubes', l: 'Equipos de hasta 8' },
+                { v: '∞', l: 'Misiones secretas' },
+              ].map(s => (
+                <div key={s.l} className="glass-card rounded-2xl p-4 border border-white/5">
+                  <div className="text-2xl font-black text-primary glow-text">{s.v}</div>
+                  <div className="label-caps text-onSurfaceVariant mt-1">{s.l}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-2">
+              {['#cafeterías', '#cocktails', '#arte-urbano', '#brunch', '#nightlife', '#libros', '#cultura', '#parques'].map(t => (
+                <span key={t} className="px-3 py-1.5 rounded-full glass-card cyber-border text-[12px] text-cyan-200/80">{t}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative animate-float">
+              <div className="absolute -inset-10 bg-primary/15 blur-[80px] rounded-full"></div>
+              <IOSDevice width={300} height={650} dark={true}>
+                <RankingMockup />
+              </IOSDevice>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PassportSection() {
+  return (
+    <section data-screen-label="06 Pasaporte" className="section-pad relative">
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
+        <div className="lg:col-span-5 flex justify-center">
+          <IOSDevice width={300} height={650} dark={true}>
+            <PassportMockup />
+          </IOSDevice>
+        </div>
+        <div className="lg:col-span-7">
+          <div className="label-caps text-primary mb-3">TU IDENTIDAD EXPLORADORA</div>
+          <h2 className="font-bold tracking-tight leading-[1.05]" style={{fontSize: 'clamp(2rem, 5vw, 3.6rem)'}}>
+            Un pasaporte<br/>de la <span className="gradient-text">vida real.</span>
+          </h2>
+          <p className="text-onSurfaceVariant mt-4 text-lg max-w-xl">
+            Cada lugar que visitás se queda con vos. Tu Explorer DNA refleja qué tipo de aventurero sos — y cambia con cada salida.
+          </p>
+
+          <div className="mt-8 space-y-3">
+            {[
+              { i: 'pets', t: 'Logros desbloqueables', d: '+30 medallas por categoría — café, nightlife, arte, gastronomía.' },
+              { i: 'science', t: 'Explorer DNA', d: 'Visualizá tu perfil de explorador en gráficos en tiempo real.' },
+              { i: 'auto_awesome', t: 'Compañero holográfico', d: 'Tu IA recomienda lugares según tu DNA y los premios que perseguís.' },
+            ].map((f, i) => (
+              <div key={i} className="flex items-start gap-4 group">
+                <div className="w-10 h-10 shrink-0 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center group-hover:glow-cyan transition-all">
+                  <span className="material-symbols-outlined text-primary text-[20px]">{f.i}</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-base">{f.t}</h4>
+                  <p className="text-onSurfaceVariant text-[14px] leading-snug">{f.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MerchantsSection() {
+  return (
+    <section data-screen-label="07 Comercios" className="section-pad relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="relative rounded-[32px] glass-card cyber-border overflow-hidden p-10 md:p-16">
+          <div className="absolute -top-32 -right-32 w-96 h-96 bg-accent/15 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-primary/15 rounded-full blur-3xl"></div>
+
+          <div className="relative grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <div className="label-caps text-accent mb-3">PORTAL COMERCIOS</div>
+              <h2 className="font-bold tracking-tight leading-[1.05]" style={{fontSize: 'clamp(1.8rem, 4.5vw, 3rem)'}}>
+                ¿Tenés un local? <br/>
+                <span style={{color:'#f0a219'}} className="glow-text" >Llená tu negocio</span> con exploradores.
+              </h2>
+              <p className="text-onSurfaceVariant mt-4 text-lg max-w-lg">
+                Generá QRs, ofrecé recompensas y atraé tráfico real. Pagás solo por visitas validadas.
+              </p>
+
+              <div className="mt-8 grid grid-cols-3 gap-4">
+                {[
+                  { v: '+82%', l: 'Tráfico medio' },
+                  { v: '4.2x', l: 'Retorno' },
+                  { v: '0$', l: 'Setup' },
+                ].map(s => (
+                  <div key={s.l} className="text-center">
+                    <div className="text-3xl font-black" style={{color:'#f0a219'}}>{s.v}</div>
+                    <div className="label-caps text-onSurfaceVariant mt-1" style={{fontSize:'9px'}}>{s.l}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <button className="px-6 h-13 py-3 rounded-full font-bold text-sm flex items-center justify-center gap-2" style={{background:'#f0a219', color:'#0a1618', boxShadow:'0 0 25px rgba(240,162,25,0.35)'}}>
+                  Sumar mi comercio
+                  <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </button>
+                <button className="px-6 py-3 rounded-full glass-card font-bold text-sm">
+                  Ver portal demo
+                </button>
+              </div>
+            </div>
+
+            {/* Merchant dashboard preview */}
+            <div className="relative">
+              <div className="glass-panel rounded-2xl p-5 border border-white/10">
+                <div className="flex items-center justify-between mb-5">
+                  <div>
+                    <div className="text-[11px] label-caps text-accent" style={{fontSize:'10px'}}>PORTAL COMERCIO</div>
+                    <div className="text-base font-bold">Bookish Cafe</div>
+                  </div>
+                  <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                    <span className="material-symbols-outlined text-accent">storefront</span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-3 gap-2 mb-4">
+                  {[
+                    { v: '124', l: 'Scans hoy', c:'#19ccf0' },
+                    { v: '+38%', l: 'vs ayer', c:'#19ccf0' },
+                    { v: '4.9', l: 'Rating', c:'#f0a219' },
+                  ].map(k => (
+                    <div key={k.l} className="bg-bgDeep/60 rounded-lg p-2.5 border border-white/5">
+                      <div className="text-base font-black" style={{color:k.c}}>{k.v}</div>
+                      <div className="text-[9px] label-caps text-onSurfaceVariant" style={{fontSize:'8px'}}>{k.l}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Mini chart */}
+                <div className="bg-bgDeep/60 rounded-lg p-3 border border-white/5 mb-4">
+                  <div className="text-[10px] label-caps text-onSurfaceVariant mb-2">VISITAS · ÚLTIMOS 7 DÍAS</div>
+                  <div className="flex items-end gap-1.5 h-16">
+                    {[40, 55, 35, 70, 60, 85, 95].map((h, i) => (
+                      <div key={i} className="flex-1 rounded-t" style={{
+                        height: h+'%',
+                        background: i===6 ? 'linear-gradient(to top, #19ccf0, #afecff)' : 'rgba(25,204,240,0.3)',
+                        boxShadow: i===6 ? '0 0 12px rgba(25,204,240,0.5)' : 'none'
+                      }}></div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="bg-bgDeep/60 rounded-lg p-3 border border-white/5">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-[10px] label-caps text-onSurfaceVariant">QR ACTIVO</div>
+                      <div className="text-[12px] font-bold">+50 NP por visita</div>
+                    </div>
+                    <div className="w-12 h-12 bg-white rounded-lg p-1 grid grid-cols-5 gap-px">
+                      {Array.from({length:25}).map((_,i)=>(
+                        <div key={i} className={Math.random()>0.5 ? 'bg-bgDark' : ''}></div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FAQ() {
+  const [open, setOpen] = React.useState(0);
+  const items = [
+    { q: '¿Cuánto cuesta usar Nubo?', a: 'Es 100% gratis para exploradores. No hay suscripciones, ni in-app purchases obligatorias. Los premios se pagan con NP que ganás caminando.' },
+    { q: '¿Cómo gano Nubo Points?', a: 'Visitá un lugar asociado, escaneá su QR o subí una foto como prueba. Cada validación te suma NP y XP — los montos varían según el lugar y los desafíos activos.' },
+    { q: '¿En qué ciudades funciona?', a: 'Arrancamos en Buenos Aires, Córdoba y Rosario. Sumamos ciudades nuevas todos los meses. Si querés que llegue a la tuya, dejános tu mail al final de la página.' },
+    { q: '¿Mis datos de ubicación son privados?', a: 'Sí. Nubo solo usa tu ubicación cuando estás escaneando un QR o validando una visita. No vendemos ni compartimos datos personales — punto.' },
+    { q: '¿Puedo sumar mi comercio?', a: 'Por supuesto. Solo pagás por visitas reales validadas. Hacé click en "Sumar mi comercio" y te abrimos el portal en menos de 24hs.' },
+  ];
+
+  return (
+    <section data-screen-label="08 FAQ" className="section-pad relative">
+      <div className="max-w-3xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <div className="label-caps text-primary mb-3">PREGUNTAS FRECUENTES</div>
+          <h2 className="font-bold tracking-tight" style={{fontSize: 'clamp(2rem, 5vw, 3.4rem)'}}>
+            Lo que <span className="gradient-text">querés saber.</span>
+          </h2>
+        </div>
+
+        <div className="space-y-3">
+          {items.map((it, i) => (
+            <button key={i} onClick={() => setOpen(open === i ? -1 : i)} className="w-full text-left glass-card rounded-2xl p-5 border border-white/5 hover:border-primary/30 transition-all">
+              <div className="flex items-center justify-between gap-4">
+                <h3 className="font-bold text-base md:text-lg">{it.q}</h3>
+                <span className="material-symbols-outlined text-primary transition-transform shrink-0" style={{transform: open === i ? 'rotate(45deg)' : 'rotate(0deg)'}}>add</span>
+              </div>
+              <div style={{maxHeight: open === i ? '200px' : '0', overflow: 'hidden', transition: 'max-height 0.3s ease, margin 0.3s ease', marginTop: open === i ? '12px' : '0'}}>
+                <p className="text-onSurfaceVariant text-[14px] leading-relaxed">{it.a}</p>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FinalCTA({ onCTA }) {
+  return (
+    <section data-screen-label="09 Final CTA" className="section-pad relative overflow-hidden">
+      <div className="absolute inset-0 radial-cyan pointer-events-none"></div>
+      <div className="absolute inset-0 dot-bg opacity-30 pointer-events-none" style={{maskImage: 'radial-gradient(ellipse at center, black 0%, transparent 70%)'}}></div>
+
+      <div className="max-w-4xl mx-auto px-6 text-center relative">
+        <div className="inline-flex items-center gap-2 tag-pill px-4 py-2 rounded-full mb-8">
+          <span className="w-2 h-2 rounded-full bg-primary glow-cyan animate-pulse-soft"></span>
+          <span className="text-[12px] font-medium text-primary tracking-wide">Disponible iOS · Android</span>
+        </div>
+
+        <h2 className="font-bold tracking-tight leading-[1.02]" style={{fontSize: 'clamp(2.2rem, 6vw, 5rem)'}}>
+          Tu próxima salida<br/>
+          puede valer <span className="gradient-text glow-text">premios reales.</span>
+        </h2>
+        <p className="text-onSurfaceVariant mt-6 text-lg max-w-xl mx-auto">
+          Bajá Nubo gratis, escaneá tu primer QR y empezá a sumar. Te toma menos de 60 segundos.
+        </p>
+
+        <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+          <button onClick={onCTA} className="btn-primary px-8 h-16 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition-all">
+            <span className="material-symbols-outlined">rocket_launch</span>
+            <span>Empezar a explorar</span>
+          </button>
+          <button className="glass-card cyber-border px-7 h-16 rounded-full font-bold text-base flex items-center justify-center gap-3 hover:bg-primary/10 transition-all">
+            <span className="material-symbols-outlined text-primary">apple</span>
+            <div className="text-left leading-tight">
+              <div className="text-[10px] label-caps text-onSurfaceVariant">Bajar para</div>
+              <div>iOS · Android</div>
+            </div>
+          </button>
+        </div>
+
+        <div className="mt-12 flex items-center justify-center gap-3">
+          <div className="flex -space-x-2">
+            {[1,2,3,4].map(i => (
+              <div key={i} className="w-9 h-9 rounded-full border-2 border-bgDark" style={{background: `linear-gradient(135deg, hsl(${180+i*20}, 60%, 35%), hsl(${180+i*20}, 30%, 20%))`}}></div>
+            ))}
+          </div>
+          <div className="text-left">
+            <div className="text-sm font-bold">+10,400 exploradores activos</div>
+            <div className="flex items-center gap-1 text-[11px] text-onSurfaceVariant">
+              <span className="material-symbols-outlined text-secondary text-[14px]" style={{fontVariationSettings:"'FILL' 1"}}>star</span>
+              <span>4.8 · 1.2k reseñas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="relative border-t border-white/5 pt-16 pb-10">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid md:grid-cols-12 gap-10">
+          <div className="md:col-span-5">
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center glow-cyan">
+                <span className="material-symbols-outlined text-bgDark text-[18px]" style={{fontVariationSettings:"'FILL' 1"}}>explore</span>
+              </div>
+              <span className="text-xl font-bold tracking-tight">Nubo</span>
+            </div>
+            <p className="text-onSurfaceVariant text-sm max-w-sm leading-relaxed">
+              Convertí cada salida en una experiencia de juego. Descubrí, validá y ganá premios reales.
+            </p>
+
+            <div className="mt-6">
+              <div className="label-caps text-onSurfaceVariant mb-2">CONTACTO</div>
+              <a href="mailto:hola@nubo.travel?subject=Hola%20Nubo" className="inline-flex items-center gap-3 group">
+                <span className="material-symbols-outlined text-primary text-[20px]">alternate_email</span>
+                <span className="text-base font-bold text-onSurface group-hover:text-primary transition-colors">hola@nubo.travel</span>
+              </a>
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                const email = e.target.elements.email.value.trim();
+                if (!email) return;
+                window.location.href = `mailto:hola@nubo.travel?subject=Sumarme%20a%20Nubo&body=Hola%2C%20mi%20mail%20es%20${encodeURIComponent(email)}`;
+              }} className="flex gap-2 max-w-sm mt-3">
+                <input name="email" type="email" placeholder="tu@email.com" className="flex-1 px-4 py-3 rounded-xl bg-bgDeep border border-white/10 text-sm focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30" />
+                <button type="submit" className="btn-primary px-4 rounded-xl font-bold text-sm">
+                  <span className="material-symbols-outlined">arrow_forward</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+            {[
+              { t: 'Producto', l: ['Cómo funciona', 'Premios', 'Ranking', 'Pasaporte', 'Comercios'] },
+              { t: 'Compañía', l: ['Sobre Nubo', 'Trabajá con nosotros', 'Press kit', 'Contacto'] },
+              { t: 'Legal', l: ['Términos', 'Privacidad', 'Cookies', 'Seguridad'] },
+            ].map(g => (
+              <div key={g.t}>
+                <div className="label-caps text-primary mb-4">{g.t}</div>
+                <ul className="space-y-2.5">
+                  {g.l.map(it => (
+                    <li key={it}><a href="#" className="text-sm text-onSurfaceVariant hover:text-primary transition-colors">{it}</a></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between gap-4">
+          <p className="text-[12px] text-onSurfaceVariant">© 2026 Nubo. Hecho con cariño en Buenos Aires.</p>
+          <div className="flex items-center gap-4">
+            {[
+              { i: 'photo_camera', href: 'https://instagram.com' },
+              { i: 'alternate_email', href: 'mailto:hola@nubo.travel' },
+              { i: 'music_note', href: 'https://tiktok.com' },
+            ].map(s => (
+              <a key={s.i} href={s.href} target={s.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="w-9 h-9 rounded-full glass-card flex items-center justify-center hover:bg-primary/10 hover:border-primary/30 transition-all">
+                <span className="material-symbols-outlined text-primary text-[18px]">{s.i}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function Nav({ onCTA }) {
+  const [scrolled, setScrolled] = React.useState(false);
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass-panel border-b border-white/5' : ''}`}>
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="#" className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center glow-cyan">
+            <span className="material-symbols-outlined text-bgDark text-[16px]" style={{fontVariationSettings:"'FILL' 1"}}>explore</span>
+          </div>
+          <span className="font-bold text-lg tracking-tight">Nubo</span>
+        </a>
+        <div className="hidden md:flex items-center gap-8">
+          {[
+            { l: 'Cómo funciona', target: '02 Cómo funciona' },
+            { l: 'Premios', target: '04 Premios' },
+            { l: 'Comunidad', target: '05 Comunidad' },
+            { l: 'Comercios', target: '07 Comercios' },
+            { l: 'FAQ', target: '08 FAQ' },
+          ].map(({l, target}) => (
+            <a key={l} href={`#${target}`} onClick={(e) => {
+              e.preventDefault();
+              const el = document.querySelector(`[data-screen-label="${target}"]`);
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }} className="text-sm text-onSurfaceVariant hover:text-primary transition-colors cursor-pointer">{l}</a>
+          ))}
+        </div>
+        <button onClick={onCTA} className="btn-primary px-5 h-10 rounded-full font-bold text-sm flex items-center gap-2 transition-all">
+          <span>Bajar app</span>
+          <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </button>
+      </div>
+    </nav>
+  );
+}
+
+Object.assign(window, { PrizesShowcase, CommunityRanking, PassportSection, MerchantsSection, FAQ, FinalCTA, Footer, Nav });
