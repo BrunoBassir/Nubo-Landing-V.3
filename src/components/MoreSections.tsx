@@ -705,7 +705,7 @@ export function FinalCTA({ onCTA }: any) {
   );
 }
 
-export function Footer() {
+export function Footer({ onOpenAbout }: { onOpenAbout?: () => void }) {
   return (
     <footer className="relative border-t border-white/5 pt-16 pb-10 bg-bgDeep relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none mix-blend-overlay"></div>
@@ -746,18 +746,48 @@ export function Footer() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center border-t border-white/5 pt-12">
             {[
-              { t: 'Producto', l: ['Cómo funciona', 'Premios', 'Ranking', 'Pasaporte', 'Comercios'] },
-              { t: 'Compañía', l: ['Sobre Nubo', 'Trabajá con nosotros', 'Press kit', 'Contacto'] },
-              { t: 'Legal', l: ['Términos', 'Privacidad', 'Cookies', 'Seguridad'] },
+              { t: 'Producto', l: [
+                { text: 'Cómo funciona', label: '02 Cómo funciona' }, 
+                { text: 'Premios', label: '04 Premios' }, 
+                { text: 'Ranking', label: '05 Comunidad' }, 
+                { text: 'Pasaporte', label: '06 Pasaporte' }, 
+                { text: 'Comercios', label: '07 Comercios' }
+              ] },
+              { t: 'Compañía', l: [
+                { text: 'Sobre Nubo', action: 'about', link: '#' }, 
+                { text: 'Trabajá con nosotros', link: 'mailto:hola@nubo.travel' }, 
+                { text: 'Press kit', link: 'mailto:hola@nubo.travel' }, 
+                { text: 'Contacto', link: 'mailto:hola@nubo.travel' }
+              ] },
+              { t: 'Legal', l: [
+                { text: 'Términos', link: '#' }, 
+                { text: 'Privacidad', link: '#' }, 
+                { text: 'Cookies', link: '#' }, 
+                { text: 'Seguridad', link: '#' }
+              ] },
             ].map((g, i) => (
               <div key={g.t} className="flex flex-col items-center">
                 <div className="label-caps text-primary mb-4">{g.t}</div>
                 <ul className="space-y-3">
                   {g.l.map(it => (
-                    <li key={it}>
-                      <a href="#" className="text-sm text-onSurfaceVariant hover:text-white hover:text-shadow-[0_0_8px_rgba(255,255,255,0.5)] transition-all flex items-center justify-center group">
+                    <li key={it.text}>
+                      <a 
+                        href={it.link || '#'} 
+                        onClick={(e) => {
+                          if (it.action === 'about') {
+                            e.preventDefault();
+                            onOpenAbout?.();
+                            return;
+                          }
+                          if (it.label) {
+                            e.preventDefault();
+                            document.querySelector(`[data-screen-label="${it.label}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
+                        className="text-sm text-onSurfaceVariant hover:text-white hover:text-shadow-[0_0_8px_rgba(255,255,255,0.5)] transition-all flex items-center justify-center group"
+                      >
                         <span className="w-0 h-px bg-primary mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-300"></span>
-                        {it}
+                        {it.text}
                       </a>
                     </li>
                   ))}

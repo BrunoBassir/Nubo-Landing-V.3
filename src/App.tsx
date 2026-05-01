@@ -7,12 +7,18 @@ import React, { useState } from 'react';
 import { Hero, HowItWorks, PointSystem } from './components/Sections';
 import { PrizesShowcase, CommunityRanking, PassportSection, MerchantsSection, FAQ, LeadCaptureSection, FinalCTA, Footer, Nav } from './components/MoreSections';
 import { ComingSoonModal } from './components/ComingSoonModal';
+import { AboutModal } from './components/AboutModal';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
 
   const handleCTA = () => {
     setIsModalOpen(true);
+  };
+
+  const handleAbout = () => {
+    setIsAboutModalOpen(true);
   };
 
   return (
@@ -28,8 +34,9 @@ export default function App() {
       <FAQ />
       <LeadCaptureSection />
       <FinalCTA onCTA={handleCTA} />
-      <Footer />
+      <Footer onOpenAbout={handleAbout} />
       <ComingSoonModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <AboutModal isOpen={isAboutModalOpen} onClose={() => setIsAboutModalOpen(false)} />
     </div>
   );
 }
