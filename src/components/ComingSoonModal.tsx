@@ -60,8 +60,8 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
             <div className="relative z-10 text-center flex flex-col items-center">
               <div className="relative mb-6">
                 <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full"></div>
-                <div className="w-20 h-20 rounded-2xl bg-bgDeep border border-primary/30 flex items-center justify-center relative shadow-[0_0_30px_rgba(25,204,240,0.3)]">
-                  <Gamepad2 className="w-10 h-10 text-primary drop-shadow-[0_0_8px_rgba(25,204,240,0.6)]" />
+                <div className="w-24 h-24 rounded-2xl bg-bgDeep border border-primary/30 flex items-center justify-center relative shadow-[0_0_30px_rgba(25,204,240,0.3)]">
+                  <img src="/logo-nubo-blanco.png" alt="Nubo" className="w-16 h-16 object-contain drop-shadow-[0_0_8px_rgba(25,204,240,0.6)]" />
                   <motion.div 
                     animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 2, repeat: Infinity }}
