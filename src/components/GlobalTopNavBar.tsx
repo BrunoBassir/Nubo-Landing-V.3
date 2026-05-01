@@ -7,9 +7,9 @@ export function GlobalTopNavBar() {
   };
   
   return (
-    <header className="absolute top-0 left-0 right-0 w-full z-[60] flex items-center justify-between px-3 h-12 bg-slate-950/80 backdrop-blur-xl border-b border-white/10 shadow-[0_0_15px_rgba(25,204,240,0.1)]">
-      <div className="flex items-center gap-2 cursor-pointer relative z-10 w-1/3">
-        <div className="w-7 h-7 rounded-full border-[1.5px] border-primary overflow-hidden flex items-center justify-center bg-primary/20 text-primary shrink-0">
+    <header className="absolute top-0 left-0 right-0 w-full z-[60] flex items-center justify-between px-4 h-16 bg-slate-950/80 backdrop-blur-xl border-b border-white/10 shadow-[0_0_15px_rgba(25,204,240,0.1)]">
+      <div className="flex items-center gap-3 cursor-pointer relative z-10 w-1/3">
+        <div className="w-8 h-8 rounded-full border-[1.5px] border-primary overflow-hidden flex items-center justify-center bg-primary/20 text-primary shrink-0">
           {user?.photoURL ? (
             <img 
               alt={user.displayName || "User"} 
@@ -21,15 +21,15 @@ export function GlobalTopNavBar() {
           )}
         </div>
         <div className="flex flex-col overflow-hidden">
-          <span className="text-[7px] text-slate-500 font-bold uppercase leading-none mb-0.5">Nivel 14</span>
-          <span className="text-[10px] font-bold text-white leading-none truncate w-full">
+          <span className="text-[8px] text-slate-500 font-bold uppercase leading-none mb-0.5">Nivel 14</span>
+          <span className="text-xs font-bold text-white leading-none truncate w-full">
             {user?.displayName ? user.displayName.split(' ')[0] : 'Explorador'}
           </span>
         </div>
       </div>
       
       <div className="flex-1 flex justify-center items-center">
-        <div className="text-primary font-bold tracking-[0.2em] text-[13px] font-display">NUBO</div>
+        <img alt="NUBO" className="h-12 w-auto brightness-125 drop-shadow-[0_0_12px_rgba(67,221,226,0.6)]" src="https://lh3.googleusercontent.com/aida/ADBb0ujTO8OICi5dMqeWK-37zXjL6hSeOTulMvdrsKKR7Lv7fW8urGGZFy4hjQBQCW-bmlF-CYsXf4_O0ItQhwdM0ywSYtBX5yEVQNUNfY7zklBeOOxLw8wupr-o3Lf0Tu0agaQ2x5MT0tuSqiWXrkyFx_1fTiP7FwYTZTQvEuhfXtzMzEUTd3gPkulOP1Uqig7ZqBm7WpZN61bKigv5Qlb8FelxgNmMRRBpoA_yOhpNjTokkypSLIClOBqbZJwyiUC0I94KaJ2gE92bjw" />
       </div>
       
       <div className="flex items-center justify-end relative z-10 w-1/3">

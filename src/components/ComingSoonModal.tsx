@@ -60,8 +60,8 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
             <div className="relative z-10 text-center flex flex-col items-center">
               <div className="relative mb-6">
                 <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full"></div>
-                <div className="w-24 h-24 rounded-2xl bg-bgDeep border border-primary/30 flex items-center justify-center relative shadow-[0_0_30px_rgba(25,204,240,0.3)]">
-                  <span className="text-2xl font-black tracking-tighter text-white drop-shadow-[0_0_8px_rgba(25,204,240,0.6)]">NUBO</span>
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-bgDeep border border-primary/30 flex items-center justify-center relative shadow-[0_0_30px_rgba(25,204,240,0.3)]">
+                  <img alt="NUBO" className="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-[0_0_8px_rgba(67,221,226,0.6)] brightness-125" src="https://lh3.googleusercontent.com/aida/ADBb0ujTO8OICi5dMqeWK-37zXjL6hSeOTulMvdrsKKR7Lv7fW8urGGZFy4hjQBQCW-bmlF-CYsXf4_O0ItQhwdM0ywSYtBX5yEVQNUNfY7zklBeOOxLw8wupr-o3Lf0Tu0agaQ2x5MT0tuSqiWXrkyFx_1fTiP7FwYTZTQvEuhfXtzMzEUTd3gPkulOP1Uqig7ZqBm7WpZN61bKigv5Qlb8FelxgNmMRRBpoA_yOhpNjTokkypSLIClOBqbZJwyiUC0I94KaJ2gE92bjw" />
                   <motion.div 
                     animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 2, repeat: Infinity }}
