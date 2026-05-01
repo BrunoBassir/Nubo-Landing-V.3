@@ -1,10 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'motion/react';
 import { User, Zap, Store, Medal, Sparkles, Star, Home, Compass, QrCode, Gift, Trophy, ArrowRight, Check, CheckCircle2, Flame, MapPin } from 'lucide-react';
 import { GlobalTopNavBar } from './GlobalTopNavBar';
 
 export function HeroMockup() {
+  const [showSplash, setShowSplash] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { amount: 0.3 });
+
+  useEffect(() => {
+    if (isInView) {
+      setShowSplash(true);
+      const timer = setTimeout(() => {
+        setShowSplash(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    } else {
+      setShowSplash(false);
+    }
+  }, [isInView]);
+
   return (
-    <div className="w-full aspect-[9/19.5] bg-[#0a1618] text-slate-100 flex flex-col overflow-hidden relative rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl scale-[1] sm:scale-100 origin-top">
+    <div ref={containerRef} className="w-full aspect-[9/19.5] bg-[#0a1618] text-slate-100 flex flex-col overflow-hidden relative rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl scale-[1] sm:scale-100 origin-top">
+      <AnimatePresence>
+        {showSplash && (
+          <motion.div 
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="absolute inset-0 z-[100] flex items-center justify-center bg-[#0a1618]"
+          >
+            <motion.img 
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              src="https://lh3.googleusercontent.com/aida/ADBb0ujTO8OICi5dMqeWK-37zXjL6hSeOTulMvdrsKKR7Lv7fW8urGGZFy4hjQBQCW-bmlF-CYsXf4_O0ItQhwdM0ywSYtBX5yEVQNUNfY7zklBeOOxLw8wupr-o3Lf0Tu0agaQ2x5MT0tuSqiWXrkyFx_1fTiP7FwYTZTQvEuhfXtzMzEUTd3gPkulOP1Uqig7ZqBm7WpZN61bKigv5Qlb8FelxgNmMRRBpoA_yOhpNjTokkypSLIClOBqbZJwyiUC0I94KaJ2gE92bjw" 
+              alt="NUBO" 
+              className="w-[85%] max-w-[320px] h-auto drop-shadow-[0_0_30px_rgba(67,221,226,0.8)] brightness-125"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <GlobalTopNavBar />
       <main className="flex-1 overflow-y-auto hide-scrollbar px-3 pt-[56px] pb-24 space-y-4">
         
