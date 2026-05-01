@@ -5,7 +5,6 @@ import { RankingMockup } from './RankingMockup';
 import { ProfileMockup } from './ProfileMockup';
 import { ScrollReveal, StaggerContainer, StaggerItem } from './ScrollReveal';
 import { motion, AnimatePresence } from 'motion/react';
-import logoNuboBlanco from '../assets/logo-nubo-blanco.png';
 
 export function PrizesShowcase() {
   return (
@@ -715,8 +714,8 @@ export function Footer() {
         <ScrollReveal>
           <div className="grid md:grid-cols-12 gap-10">
             <div className="md:col-span-5">
-              <div className="flex items-center gap-2.5 mb-6 group cursor-pointer -ml-2">
-                <img src={logoNuboBlanco} alt="Nubo" className="h-24 md:h-32 object-contain group-hover:scale-105 transition-transform drop-shadow-[0_0_25px_rgba(25,204,240,0.5)] brightness-110" />
+               <div className="flex items-center gap-2.5 mb-6 group cursor-pointer -ml-2">
+                <span className="text-3xl md:text-5xl font-black tracking-tighter text-white drop-shadow-[0_0_25px_rgba(25,204,240,0.5)]">NUBO</span>
               </div>
               <p className="text-onSurfaceVariant text-sm max-w-sm leading-relaxed">
                 Convertí cada salida en una experiencia de juego. Descubrí, validá y ganá premios reales.
@@ -805,7 +804,7 @@ export function Nav({ onCTA }: any) {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass-panel border-b border-white/5' : ''}`}>
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2.5 group">
-          <img src={logoNuboBlanco} alt="Nubo" className="h-10 md:h-12 object-contain group-hover:scale-105 transition-transform drop-shadow-[0_0_10px_rgba(25,204,240,0.2)]" />
+          <span className="text-xl md:text-2xl font-black tracking-tighter text-white drop-shadow-[0_0_10px_rgba(25,204,240,0.5)]">NUBO</span>
         </a>
         <div className="hidden md:flex items-center gap-8">
           {[
