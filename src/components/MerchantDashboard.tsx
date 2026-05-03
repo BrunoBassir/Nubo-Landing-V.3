@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { QrCode, Ticket, Percent, LogOut, CheckCircle2, Circle, Store, Download, FileText, ChevronRight, LayoutDashboard, Settings, HelpCircle, Menu, X, Activity, FolderDown, User, MapPin, Clock, Phone, Instagram, Printer, ScanLine, Trophy, TrendingUp, Users, Target, Megaphone, BellRing, Rocket } from 'lucide-react';
+import { QrCode, Ticket, Percent, LogOut, CheckCircle2, Circle, Store, Download, FileText, ChevronRight, LayoutDashboard, Settings, HelpCircle, Menu, X, Activity, FolderDown, User, MapPin, Clock, Phone, Instagram, Printer, ScanLine, Trophy, TrendingUp, Users, Target, Megaphone, BellRing, Rocket, Key, Shield, Mail, MessageSquare, Video, ExternalLink } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 interface MerchantDashboardProps {
@@ -13,6 +13,25 @@ export function MerchantDashboard({ onLogout }: MerchantDashboardProps) {
   const [selectedCampaign, setSelectedCampaign] = useState<string | null>(null);
   const [campaignMessage, setCampaignMessage] = useState('');
   const [campaignTemplate, setCampaignTemplate] = useState('template');
+  const [scanStatus, setScanStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [scanCode, setScanCode] = useState('');
+
+  const handleValidateScan = () => {
+    if (!scanCode.trim()) return;
+    
+    // Simulate validation logic
+    if (scanCode.toLowerCase() === 'error') {
+      setScanStatus('error');
+    } else {
+      setScanStatus('success');
+    }
+    
+    // Reset after 3 seconds
+    setTimeout(() => {
+      setScanStatus('idle');
+      setScanCode('');
+    }, 3000);
+  };
   
   const [profileTasks] = useState([
     { id: 1, label: 'Completar información básica (Horarios, Dirección)', done: true },
@@ -558,6 +577,38 @@ export function MerchantDashboard({ onLogout }: MerchantDashboardProps) {
                 </div>
 
                 <div className="w-full relative">
+                  {/* Validation Feedback Overlay */}
+                  <AnimatePresence>
+                    {scanStatus === 'success' && (
+                      <motion.div 
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-emerald-500/20 backdrop-blur-xl rounded-3xl border-2 border-emerald-500/50 shadow-[0_0_50px_rgba(16,185,129,0.3)]"
+                      >
+                        <div className="w-24 h-24 bg-emerald-500 rounded-full flex items-center justify-center mb-6 shadow-xl shadow-emerald-500/50">
+                          <CheckCircle2 className="w-12 h-12 text-white" />
+                        </div>
+                        <h2 className="text-3xl font-display font-bold text-white mb-2">¡Validación Exitosa!</h2>
+                        <p className="text-emerald-100 font-medium">Se ha registrado el escaneo correctamente.</p>
+                      </motion.div>
+                    )}
+                    {scanStatus === 'error' && (
+                      <motion.div 
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-red-500/20 backdrop-blur-xl rounded-3xl border-2 border-red-500/50 shadow-[0_0_50px_rgba(239,68,68,0.3)]"
+                      >
+                        <div className="w-24 h-24 bg-red-500 rounded-full flex items-center justify-center mb-6 shadow-xl shadow-red-500/50 text-white font-bold text-4xl">
+                          <X className="w-12 h-12" />
+                        </div>
+                        <h2 className="text-3xl font-display font-bold text-white mb-2">Código Inválido</h2>
+                        <p className="text-red-100 font-medium">El código no existe o ya fue utilizado.</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
                   {/* Scanner Frame */}
                   <div className="aspect-square sm:aspect-[4/3] w-full max-w-md mx-auto relative rounded-3xl overflow-hidden bg-black/50 border border-white/10 shadow-[0_0_50px_rgba(25,204,240,0.1)] flex items-center justify-center backdrop-blur-xl">
                     <ScanLine className="w-20 h-20 text-white/20 absolute" />
@@ -587,10 +638,17 @@ export function MerchantDashboard({ onLogout }: MerchantDashboardProps) {
                     <div className="flex gap-2 max-w-sm mx-auto">
                       <input 
                         type="text" 
+                        value={scanCode}
+                        onChange={(e) => setScanCode(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && handleValidateScan()}
                         placeholder="Ej: NUBO-12345" 
                         className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 text-center font-mono tracking-widest uppercase"
                       />
-                      <button className="bg-primary text-bgDark font-bold px-6 py-3 rounded-xl hover:bg-primary/90 transition-colors">
+                      <button 
+                        onClick={handleValidateScan}
+                        disabled={scanStatus !== 'idle'}
+                        className="bg-primary text-bgDark font-bold px-6 py-3 rounded-xl hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
                         Validar
                       </button>
                     </div>
@@ -696,7 +754,243 @@ export function MerchantDashboard({ onLogout }: MerchantDashboardProps) {
               </div>
             )}
 
-            {activeTab !== 'dashboard' && activeTab !== 'resources' && activeTab !== 'profile' && activeTab !== 'scanner' && activeTab !== 'campaigns' && (
+            {activeTab === 'settings' && (
+              <div className="space-y-6 max-w-5xl">
+                <div>
+                  <h1 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight mb-2">
+                    Configuración
+                  </h1>
+                  <p className="text-onSurfaceVariant text-base max-w-2xl">
+                    Administrá la seguridad de tu cuenta, notificaciones y accesos de tu equipo.
+                  </p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {/* Content */}
+                  <div className="md:col-span-3 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    
+                    {/* Security */}
+                    <div className="glass-card rounded-3xl p-6 md:p-8 border border-white/10 flex flex-col">
+                      <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 mb-6">
+                        <Key className="w-6 h-6" />
+                      </div>
+                      <h3 className="text-xl font-display font-bold text-white mb-2">Seguridad y Acceso</h3>
+                      <p className="text-sm text-slate-400 mb-6 leading-relaxed">Actualizá tu contraseña y configurá la autenticación en dos pasos para mayor seguridad.</p>
+                      
+                      <div className="space-y-4 mt-auto">
+                         <div className="space-y-1.5">
+                           <label className="text-xs text-slate-400 font-medium">Contraseña Actual</label>
+                           <input type="password" placeholder="••••••••" className="w-full bg-bgDeep border border-white/10 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-primary/50" />
+                         </div>
+                         <div className="space-y-1.5">
+                           <label className="text-xs text-slate-400 font-medium">Nueva Contraseña</label>
+                           <input type="password" placeholder="••••••••" className="w-full bg-bgDeep border border-white/10 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-primary/50" />
+                         </div>
+                         <button className="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold py-2.5 rounded-xl transition-colors text-sm mt-2">
+                           Actualizar Contraseña
+                         </button>
+                      </div>
+                    </div>
+
+                    {/* Team */}
+                    <div className="glass-card rounded-3xl p-6 md:p-8 border border-white/10 flex flex-col">
+                      <div className="w-12 h-12 rounded-2xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400 mb-6">
+                        <Users className="w-6 h-6" />
+                      </div>
+                      <h3 className="text-xl font-display font-bold text-white mb-2">Equipo de Trabajo</h3>
+                      <p className="text-sm text-slate-400 mb-6 leading-relaxed">Invitá a tus empleados para que puedan usar el escáner de validación con sus propias cuentas.</p>
+                      
+                      <div className="space-y-3 mt-auto">
+                        <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs border border-primary/30">JS</div>
+                            <div>
+                              <p className="text-sm font-bold text-slate-200">Juan Sur</p>
+                              <p className="text-xs text-slate-400">Dueño / Admin</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 font-bold text-xs border border-white/10">MM</div>
+                            <div>
+                              <p className="text-sm font-bold text-slate-200">María Mozo</p>
+                              <p className="text-xs text-slate-400">Rol: Escáner</p>
+                            </div>
+                          </div>
+                          <button className="text-xs text-red-400 hover:text-red-300 font-medium px-2">Remover</button>
+                        </div>
+
+                        <button className="w-full flex items-center justify-center gap-2 bg-emerald-400 text-bgDark hover:bg-emerald-300 font-bold py-2.5 rounded-xl transition-colors text-sm mt-2 shadow-[0_0_15px_rgba(52,211,153,0.3)]">
+                          <User className="w-4 h-4" />
+                          Invitar Miembro
+                        </button>
+                      </div>
+                    </div>
+                    
+                    {/* Notifications */}
+                    <div className="lg:col-span-2 glass-card rounded-3xl p-6 md:p-8 border border-white/10">
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary">
+                            <BellRing className="w-6 h-6" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-display font-bold text-white mb-1">Preferencias de Notificación</h3>
+                            <p className="text-sm text-slate-400">Controlá cómo y cuándo querés que te avisemos.</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="space-y-4 max-w-xl">
+                        <label className="flex items-center justify-between cursor-pointer p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                          <div>
+                            <p className="text-sm font-bold text-slate-200">Resumen Diario de Validaciones</p>
+                            <p className="text-xs text-slate-400">Recibí un email con la actividad del día.</p>
+                          </div>
+                          <div className="relative inline-block w-11 h-6 rounded-full bg-emerald-500/30 border border-emerald-500/50">
+                            <span className="absolute left-6 top-1 w-4 h-4 rounded-full bg-emerald-400 transition-all shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+                          </div>
+                        </label>
+                        
+                        <label className="flex items-center justify-between cursor-pointer p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                          <div>
+                            <p className="text-sm font-bold text-slate-200">Alerta de Campañas (Nubo Ads)</p>
+                            <p className="text-xs text-slate-400">Avisos sobre cupos disponibles y reportes de rendimiento.</p>
+                          </div>
+                          <div className="relative inline-block w-11 h-6 rounded-full bg-emerald-500/30 border border-emerald-500/50">
+                            <span className="absolute left-6 top-1 w-4 h-4 rounded-full bg-emerald-400 transition-all shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+                          </div>
+                        </label>
+
+                        <label className="flex items-center justify-between cursor-pointer p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors opacity-75">
+                          <div>
+                            <p className="text-sm font-bold text-slate-200">Alertas al instante (Push)</p>
+                            <p className="text-xs text-slate-400">Recibí una alerta rápida por cada canje realizado. (No recomendado)</p>
+                          </div>
+                          <div className="relative inline-block w-11 h-6 rounded-full bg-slate-800 border border-white/10">
+                            <span className="absolute left-1 top-1 w-4 h-4 rounded-full bg-slate-500 transition-all"></span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'help' && (
+              <div className="space-y-6 max-w-5xl">
+                <div>
+                  <h1 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight mb-2">
+                    Ayuda y <span className="gradient-text glow-text">Soporte</span>
+                  </h1>
+                  <p className="text-onSurfaceVariant text-base max-w-2xl">
+                    Encontrá respuestas rápidas o comunicate con el equipo de soporte de Nubo.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  {/* Left Column (FAQ & Docs) */}
+                  <div className="lg:col-span-2 space-y-6">
+                    <div className="glass-card rounded-3xl p-6 md:p-8 border border-white/10">
+                      <h3 className="text-xl font-display font-bold text-white mb-6">Preguntas Frecuentes</h3>
+                      
+                      <div className="space-y-4">
+                        <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
+                          <h4 className="text-sm font-bold text-slate-200 mb-2">¿Cómo valido un canje desde la app?</h4>
+                          <p className="text-sm text-slate-400 leading-relaxed">
+                            Podés usar la sección "Escáner Web" en esta plataforma desde tu celular, tablet o computadora conectada a una cámara, y escanear el QR que el explorador te muestre en su pantalla. También podés ingresar el código alfanumérico manualmente.
+                          </p>
+                        </div>
+                        
+                        <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
+                          <h4 className="text-sm font-bold text-slate-200 mb-2">¿Qué pasa si me quedo sin cupos en Nubo Ads?</h4>
+                          <p className="text-sm text-slate-400 leading-relaxed">
+                            Los cupos se renuevan el día 1 de cada mes. Mantenemos límites estrictos para asegurar que la experiencia de los exploradores sea orgánica y no se llene de promociones, manteniendo un alto valor para tu inversión.
+                          </p>
+                        </div>
+
+                        <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
+                          <h4 className="text-sm font-bold text-slate-200 mb-2">¿Cuándo se actualizan las métricas del dashboard?</h4>
+                          <p className="text-sm text-slate-400 leading-relaxed">
+                            Las métricas de validación y demografía se actualizan en tiempo real. Los reportes consolidados (semanal y mensual) se generan los días lunes y el 1er día del mes respectivamente.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                       <a href="#" className="glass-card rounded-2xl p-6 border border-white/10 hover:border-primary/30 transition-all group flex flex-col items-center text-center">
+                         <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform flex items-center justify-center mb-4">
+                           <Video className="w-6 h-6" />
+                         </div>
+                         <h4 className="text-base font-bold text-slate-100 mb-2">Tutoriales en Video</h4>
+                         <p className="text-sm text-slate-400 mb-4">Aprende a sacarle el máximo jugo a tu perfil.</p>
+                         <span className="text-xs font-bold text-primary flex items-center gap-1 mt-auto">Ver en YouTube <ExternalLink className="w-3 h-3" /></span>
+                       </a>
+
+                       <a href="#" className="glass-card rounded-2xl p-6 border border-white/10 hover:border-secondary/30 transition-all group flex flex-col items-center text-center">
+                         <div className="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary group-hover:scale-110 transition-transform flex items-center justify-center mb-4">
+                           <FileText className="w-6 h-6" />
+                         </div>
+                         <h4 className="text-base font-bold text-slate-100 mb-2">Base de Conocimiento</h4>
+                         <p className="text-sm text-slate-400 mb-4">Manual de marca, uso y mejores prácticas.</p>
+                         <span className="text-xs font-bold text-secondary flex items-center gap-1 mt-auto">Ir al portal <ExternalLink className="w-3 h-3" /></span>
+                       </a>
+                     </div>
+                  </div>
+
+                  {/* Right Column (Contact) */}
+                  <div>
+                    <div className="glass-card rounded-3xl p-6 md:p-8 border border-white/10 sticky top-6">
+                      <div className="w-12 h-12 rounded-2xl bg-primary/20 text-primary border border-primary/30 flex items-center justify-center mb-6">
+                        <MessageSquare className="w-6 h-6" />
+                      </div>
+                      <h3 className="text-xl font-display font-bold text-white mb-2">¿Necesitás más ayuda?</h3>
+                      <p className="text-sm text-slate-400 mb-6 leading-relaxed">
+                        Nuestro equipo de soporte para comercios asociados atiende de Lunes a Viernes de 9 a 18 hs.
+                      </p>
+
+                      <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Mensaje enviado"); }}>
+                        <div className="space-y-1.5">
+                          <label className="text-xs text-slate-400 font-medium">Motivo</label>
+                          <select className="w-full bg-bgDeep border border-white/10 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-primary/50 appearance-none">
+                            <option>Dudas sobre la plataforma</option>
+                            <option>Problema técnico / Bug</option>
+                            <option>Facturación / Pagos</option>
+                            <option>Sugerencias</option>
+                          </select>
+                        </div>
+                        <div className="space-y-1.5">
+                          <label className="text-xs text-slate-400 font-medium">Mensaje</label>
+                          <textarea 
+                            rows={4} 
+                            placeholder="Describinos el inconveniente..."
+                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-primary/50 resize-none"
+                          ></textarea>
+                        </div>
+                        <button type="submit" className="w-full bg-primary text-bgDark font-bold py-3 rounded-xl hover:bg-primary/90 transition-colors shadow-[0_0_15px_rgba(67,221,226,0.3)] mt-2">
+                          Enviar Mensaje
+                        </button>
+                      </form>
+                      
+                      <div className="mt-8 border-t border-white/10 pt-6">
+                        <a href="mailto:comercios@nubo.travel" className="flex items-center gap-3 text-sm text-slate-300 hover:text-white transition-colors group">
+                           <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+                             <Mail className="w-4 h-4" />
+                           </div>
+                           comercios@nubo.travel
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            )}
+
+            {activeTab !== 'dashboard' && activeTab !== 'resources' && activeTab !== 'profile' && activeTab !== 'scanner' && activeTab !== 'campaigns' && activeTab !== 'settings' && activeTab !== 'help' && (
               <div className="flex flex-col items-center justify-center min-h-[400px] text-center border-2 border-dashed border-white/10 rounded-3xl p-8">
                 <Store className="w-16 h-16 text-slate-600 mb-4" />
                 <h2 className="text-2xl font-display font-bold text-white mb-2">Próximamente</h2>
