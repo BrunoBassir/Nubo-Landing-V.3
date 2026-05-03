@@ -8,10 +8,12 @@ import { Hero, HowItWorks, PointSystem } from './components/Sections';
 import { PrizesShowcase, CommunityRanking, PassportSection, MerchantsSection, FAQ, LeadCaptureSection, FinalCTA, Footer, Nav } from './components/MoreSections';
 import { ComingSoonModal } from './components/ComingSoonModal';
 import { AboutModal } from './components/AboutModal';
+import { MerchantDashboard } from './components/MerchantDashboard';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
+  const [view, setView] = useState<'landing' | 'merchant'>('landing');
 
   const handleCTA = () => {
     setIsModalOpen(true);
@@ -21,9 +23,13 @@ export default function App() {
     setIsAboutModalOpen(true);
   };
 
+  if (view === 'merchant') {
+    return <MerchantDashboard onLogout={() => setView('landing')} />;
+  }
+
   return (
     <div className="min-h-screen bg-bgDark text-onSurface relative overflow-x-hidden">
-      <Nav onCTA={handleCTA} />
+      <Nav onCTA={handleCTA} onMerchantLogin={() => setView('merchant')} />
       <Hero onCTA={handleCTA} />
       <HowItWorks />
       <PointSystem />

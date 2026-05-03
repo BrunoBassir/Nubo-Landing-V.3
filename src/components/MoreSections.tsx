@@ -820,7 +820,7 @@ export function Footer({ onOpenAbout }: { onOpenAbout?: () => void }) {
   );
 }
 
-export function Nav({ onCTA }: any) {
+export function Nav({ onCTA, onMerchantLogin }: any) {
   const [scrolled, setScrolled] = React.useState(false);
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -850,7 +850,7 @@ export function Nav({ onCTA }: any) {
           ))}
         </div>
         <div className="flex items-center gap-4">
-          <button className="hidden sm:flex text-sm font-bold text-onSurfaceVariant hover:text-primary transition-colors border border-white/10 hover:border-primary/30 px-5 h-10 rounded-full items-center justify-center bg-white/5">
+          <button onClick={onMerchantLogin} className="hidden sm:flex text-sm font-bold text-onSurfaceVariant hover:text-primary transition-colors border border-white/10 hover:border-primary/30 px-5 h-10 rounded-full items-center justify-center bg-white/5">
             Acceso Comercios
           </button>
           <button onClick={onCTA} className="btn-primary px-5 h-10 rounded-full font-bold text-sm flex items-center gap-2 transition-all">
