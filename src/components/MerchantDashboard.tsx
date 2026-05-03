@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { QrCode, Ticket, Percent, LogOut, CheckCircle2, Circle, Store, Download, FileText, ChevronRight, LayoutDashboard, Settings, HelpCircle, Menu, X, Activity, FolderDown, User, MapPin, Clock, Phone, Instagram, Printer, ScanLine, Trophy, TrendingUp, Users, Target, Megaphone, BellRing, Rocket, Key, Shield, Mail, MessageSquare, Video, ExternalLink } from 'lucide-react';
+import { QrCode, Ticket, Percent, LogOut, CheckCircle2, Circle, Store, Download, FileText, ChevronRight, LayoutDashboard, Settings, HelpCircle, Menu, X, Activity, FolderDown, User, MapPin, Clock, Phone, Instagram, Printer, ScanLine, Trophy, TrendingUp, Users, Target, Megaphone, BellRing, Rocket, Key, Shield, Mail, MessageSquare, Video, ExternalLink, Globe, Lightbulb } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 interface MerchantDashboardProps {
@@ -154,11 +154,22 @@ export function MerchantDashboard({ onLogout }: MerchantDashboardProps) {
             </button>
             <span className="font-display font-medium text-[15px] sm:hidden lg:block text-slate-300 tracking-tight">Portal de Comercios</span>
           </div>
-          <div className="flex items-center gap-3">
-             <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
-                <Store className="w-4 h-4 text-primary" />
-             </div>
-             <span className="text-sm font-bold hidden sm:block">Café Nubo</span>
+          <div className="flex items-center gap-4 sm:gap-6">
+            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-slate-300 hover:bg-white/10 cursor-pointer transition-colors">
+              <Globe className="w-3.5 h-3.5 text-primary" />
+              <select className="bg-transparent border-none outline-none cursor-pointer appearance-none outline-none">
+                <option value="es" className="bg-bgDark text-white">ES</option>
+                <option value="en" className="bg-bgDark text-white">EN</option>
+                <option value="pt" className="bg-bgDark text-white">PT</option>
+              </select>
+            </div>
+            <div className="w-px h-6 bg-white/10 hidden sm:block"></div>
+            <div className="flex items-center gap-3">
+               <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
+                  <Store className="w-4 h-4 text-primary" />
+               </div>
+               <span className="text-sm font-bold hidden sm:block">Café Nubo</span>
+            </div>
           </div>
         </nav>
 
@@ -369,6 +380,55 @@ export function MerchantDashboard({ onLogout }: MerchantDashboardProps) {
                             <span className="text-xs text-slate-300">{d.name} <span className="text-slate-500 block">{d.value}%</span></span>
                           </div>
                         ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Educational Metrics / Nubo Insights */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.7 }}
+                    className="lg:col-span-3 glass-card rounded-2xl border-2 border-primary/20 overflow-hidden relative"
+                  >
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[60px] pointer-events-none rounded-full" />
+                    
+                    <div className="p-6 sm:p-8 flex flex-col md:flex-row gap-8 items-center md:items-stretch relative z-10">
+                      {/* Left: Summary */}
+                      <div className="flex-1 space-y-4 text-center md:text-left">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/30 text-xs font-bold uppercase tracking-wider mb-2">
+                          <Lightbulb className="w-4 h-4" />
+                          Nubo Insights
+                        </div>
+                        <h3 className="text-2xl font-display font-bold text-white">¿Sabías que tus validaciones aumentan los Viernes por la tarde?</h3>
+                        <p className="text-slate-300 text-sm md:text-base leading-relaxed">
+                          Tus datos muestran que el <span className="font-bold text-emerald-400">45% de tus exploradores</span> (mayormente de 25-34 años) te visitan para hacer <span className="text-white">after office</span>. ¡Aprovechá esta tendencia!
+                        </p>
+                      </div>
+
+                      {/* Right: Actions/Tips */}
+                      <div className="w-full md:w-80 shrink-0 space-y-3 flex flex-col justify-center">
+                        <div className="p-4 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3 hover:bg-white/10 transition-colors cursor-pointer">
+                           <div className="p-2 rounded-lg bg-emerald-500/20 text-emerald-400">
+                             <Target className="w-4 h-4" />
+                           </div>
+                           <div>
+                             <p className="text-sm font-bold text-white mb-1">Optimizá tu Menú</p>
+                             <p className="text-xs text-slate-400">Agregá más opciones de tapeo o "Happy Hour" entre las 18 y las 20hs.</p>
+                           </div>
+                        </div>
+
+                        <div className="p-4 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3 hover:bg-white/10 transition-colors cursor-pointer">
+                           <div className="p-2 rounded-lg bg-indigo-500/20 text-indigo-400">
+                             <Megaphone className="w-4 h-4" />
+                           </div>
+                           <div>
+                             <p className="text-sm font-bold text-white mb-1">Campaña Nubo Ads</p>
+                             <p className="text-xs text-slate-400">Destacá tu perfil los Jueves y Viernes por la tarde para atraer más oficinistas.</p>
+                           </div>
+                        </div>
                       </div>
                     </div>
                   </motion.div>
