@@ -7,7 +7,7 @@ export function PrizesMockup() {
     <div className="w-full aspect-[9/19.5] bg-[#101f22] text-slate-100 flex flex-col overflow-hidden relative rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl scale-[1] sm:scale-100 origin-top">
       <GlobalTopNavBar />
 
-      <main className="flex-1 overflow-y-auto hide-scrollbar pb-6 pt-[56px] relative">
+      <main className="flex-1 overflow-y-auto hide-scrollbar pb-6 pt-[80px] relative">
         <div className="px-4 py-1 flex items-center justify-between mt-2 mb-3">
           <span className="text-[9px] font-bold text-primary uppercase tracking-[0.2em]">Nubo Rewards</span>
           <div className="flex bg-white/5 p-1 rounded-full border border-white/10 gap-0.5 relative z-10 w-2/3">

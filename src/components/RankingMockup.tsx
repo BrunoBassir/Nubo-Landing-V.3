@@ -7,7 +7,7 @@ export function RankingMockup() {
     <div className="w-full aspect-[9/19.5] bg-[#0a1618] text-slate-100 flex flex-col overflow-hidden relative rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl scale-[1] sm:scale-100 origin-top">
       <GlobalTopNavBar />
 
-      <main className="flex-1 overflow-y-auto px-3 pb-24 hide-scrollbar pt-[56px]">
+      <main className="flex-1 overflow-y-auto px-3 pb-24 hide-scrollbar pt-[80px]">
         <div className="flex bg-slate-800/80 p-1 rounded-full w-full border border-white/10 overflow-x-auto hide-scrollbar gap-0.5 mb-2">
           <div className="flex-1 px-1.5 py-1.5 rounded-full text-[8px] bg-primary text-[#0a1618] font-bold shadow-md flex items-center justify-center gap-1">
             <Globe className="w-2.5 h-2.5" /> Global

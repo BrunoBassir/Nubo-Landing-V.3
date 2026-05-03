@@ -17,7 +17,7 @@ export function ProfileMockup() {
     <div className="w-full aspect-[9/19.5] bg-[#0a1618] text-slate-100 flex flex-col overflow-hidden relative rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl scale-[1] sm:scale-100 origin-top">
       <GlobalTopNavBar />
 
-      <main className="flex-1 overflow-y-auto pt-[56px] pb-24 hide-scrollbar">
+      <main className="flex-1 overflow-y-auto pt-[80px] pb-24 hide-scrollbar">
         {/* Profile Hero Section */}
         <section className="flex flex-col items-center px-4 pt-0 pb-6">
           <div className="relative flex items-center justify-center w-28 h-28">

@@ -43,7 +43,7 @@ export function HeroMockup() {
       </AnimatePresence>
 
       <GlobalTopNavBar />
-      <main className="flex-1 overflow-y-auto hide-scrollbar px-3 pt-[56px] pb-24 space-y-4">
+      <main className="flex-1 overflow-y-auto hide-scrollbar px-3 pt-[80px] pb-24 space-y-4">
         
         {/* Welcome Header */}
         <div className="flex justify-between items-end mb-1">
