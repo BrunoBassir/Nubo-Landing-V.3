@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Hero, HowItWorks, PointSystem } from './components/Sections';
 import { PrizesShowcase, CommunityRanking, PassportSection, MerchantsSection, FAQ, LeadCaptureSection, FinalCTA, Footer, Nav } from './components/MoreSections';
 import { ComingSoonModal } from './components/ComingSoonModal';
@@ -15,6 +15,10 @@ export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [view, setView] = useState<'landing' | 'merchant-landing' | 'merchant-dashboard'>('landing');
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [view]);
 
   const handleCTA = () => {
     setIsModalOpen(true);
