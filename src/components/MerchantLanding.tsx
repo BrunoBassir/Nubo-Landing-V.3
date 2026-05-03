@@ -95,18 +95,19 @@ export function MerchantLanding({ onAccessDashboard, onBack }: MerchantLandingPr
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="relative lg:ml-10"
+            className="relative lg:ml-10 z-10"
           >
             {/* Main Image */}
-            <div className="aspect-[4/3] rounded-[2rem] overflow-hidden glass-card border border-white/10 p-2 shadow-2xl shadow-primary/10">
+            <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden glass-card border border-white/10 p-2 shadow-2xl shadow-primary/10">
               <img 
                 src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1200&h=900" 
                 alt="Cafetería" 
                 className="w-full h-full object-cover rounded-2xl grayscale-[20%] contrast-125"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bgDark/80 via-transparent to-transparent rounded-[2rem]"></div>
+            </div>
               
-              {/* Floating Element 1 - Scan */}
+            {/* Floating Element 1 - Scan */}
               <motion.div 
                 animate={{ y: [0, -10, 0] }} 
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
@@ -145,7 +146,6 @@ export function MerchantLanding({ onAccessDashboard, onBack }: MerchantLandingPr
                   </div>
                 </div>
               </motion.div>
-            </div>
           </motion.div>
         </div>
       </main>
