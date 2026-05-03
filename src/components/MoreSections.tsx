@@ -207,8 +207,7 @@ export function PassportSection() {
   );
 }
 
-export function MerchantsSection() {
-  const [isDemoOpen, setIsDemoOpen] = React.useState(false);
+export function MerchantsSection({ onAccessDashboard, onMerchantLanding }: { onAccessDashboard: () => void, onMerchantLanding: () => void }) {
 
   return (
     <section data-screen-label="07 Comercios" className="section-pad relative overflow-hidden">
@@ -254,17 +253,17 @@ export function MerchantsSection() {
                 </div>
 
                 <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                  <motion.a 
-                    href="mailto:hola@nubo.travel"
+                  <motion.button 
+                    onClick={onMerchantLanding}
                     whileHover={{ scale: 1.05, boxShadow: '0 0 35px rgba(240,162,25,0.5)' }}
                     whileTap={{ scale: 0.95 }}
                     className="px-6 h-13 py-3 rounded-full font-bold text-sm flex items-center justify-center gap-2" style={{background:'#f0a219', color:'#0a1618', boxShadow:'0 0 25px rgba(240,162,25,0.35)'}}
                   >
                     Sumar mi comercio
                     <ArrowRight className="w-5 h-5" />
-                  </motion.a>
+                  </motion.button>
                   <motion.button 
-                    onClick={() => setIsDemoOpen(true)}
+                    onClick={onAccessDashboard}
                     whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.05)' }}
                     whileTap={{ scale: 0.95 }}
                     className="px-6 py-3 rounded-full glass-card font-bold text-sm border-white/10 hover:border-white/20 transition-colors"
@@ -361,150 +360,7 @@ export function MerchantsSection() {
         </ScrollReveal>
       </div>
 
-      <AnimatePresence>
-        {isDemoOpen && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12">
-            <motion.div 
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }} 
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-bgDark/90 backdrop-blur-sm"
-              onClick={() => setIsDemoOpen(false)}
-            />
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 30 }}
-              className="relative z-10 w-full max-w-6xl rounded-[32px] overflow-hidden glass-card cyber-border bg-bgDeep max-h-[90vh] flex flex-col shadow-[0_0_50px_rgba(25,204,240,0.2)]"
-            >
-              <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between shrink-0 bg-black/40">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                    <Store className="w-4 h-4 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg leading-none">Portal Nubo Comercios</h3>
-                    <p className="text-[11px] text-onSurfaceVariant mt-1">Vista de demostración</p>
-                  </div>
-                </div>
-                <button onClick={() => setIsDemoOpen(false)} className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/10 text-onSurfaceVariant hover:text-white transition-colors">
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-              <div className="p-0 overflow-y-auto bg-black/20 flex-1">
-                <div className="p-6 md:p-8 bg-bgDark text-white h-[600px] overflow-y-auto">
-                  <div className="flex justify-between items-end mb-8 border-b border-white/10 pb-6">
-                    <div>
-                      <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400">Panel de Control</h2>
-                      <p className="text-onSurfaceVariant text-sm mt-1">Laika Club de Perros - Resumen de los últimos 30 días</p>
-                    </div>
-                    <div className="text-sm font-medium px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 flex items-center gap-2">
-                       <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                      </span>
-                      Plan Pro (Nubo Comercios)
-                    </div>
-                  </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                    {[
-                      { label: 'Visitas Validadas', value: '+1,248', icon: Users, color: 'text-primary', up: true },
-                      { label: 'Nubo Points Otorgados', value: '35,400 NP', icon: Award, color: 'text-[#f0a219]', up: true },
-                      { label: 'Premios Canjeados', value: '184', icon: Gift, color: 'text-purple-400', up: true },
-                      { label: 'Escaneos QR Totales', value: '2,105', icon: QrCode, color: 'text-emerald-400', up: true },
-                    ].map(stat => (
-                      <div key={stat.label} className="glass-card cyber-border p-5 rounded-[20px] bg-gradient-to-br from-white/[0.03] to-transparent">
-                        <div className="flex items-start justify-between mb-3">
-                          <div className={`p-2.5 rounded-xl bg-white/5 ${stat.color}`}>
-                            <stat.icon className="w-5 h-5" />
-                          </div>
-                          <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 ${stat.up ? 'text-emerald-400 bg-emerald-400/10' : 'text-red-400 bg-red-400/10'}`}>
-                            {stat.up ? <ArrowUpRight className="w-3 h-3" /> : null}
-                            12%
-                          </span>
-                        </div>
-                        <p className="text-onSurfaceVariant text-xs font-medium uppercase tracking-wider">{stat.label}</p>
-                        <h3 className="text-2xl font-black text-white mt-1 font-mono tracking-tight">{stat.value}</h3>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <div className="lg:col-span-2 glass-card cyber-border p-6 rounded-[24px] flex flex-col bg-gradient-to-br from-white/[0.02] to-transparent">
-                        <div className="flex justify-between items-center mb-6">
-                          <h3 className="text-lg font-bold">Actividad en Vivo</h3>
-                          <button className="text-primary text-sm font-medium hover:underline">Ver todo</button>
-                        </div>
-                        <div className="flex-1 flex flex-col gap-3">
-                          {[
-                            { user: 'Sofía M.', action: 'Canjeó "2x1 en Pintas"', time: 'Hace 5 min', pts: '-500 NP', color: 'from-orange-500/40 to-red-500/40' },
-                            { user: 'Tomás G.', action: 'Visitó el local (Validación QR)', time: 'Hace 12 min', pts: '+50 NP', color: 'from-primary/40 to-cyan-500/40' },
-                            { user: 'Agustín R.', action: 'Escaneó promoción en mesa', time: 'Hace 45 min', pts: '+10 NP', color: 'from-emerald-500/40 to-teal-500/40' },
-                            { user: 'Valentina C.', action: 'Canjeó "Postre Gratis"', time: 'Hace 1 hora', pts: '-300 NP', color: 'from-purple-500/40 to-pink-500/40' },
-                            { user: 'Ignacio F.', action: 'Visitó el local (Por Ubicación)', time: 'Hace 2 horas', pts: '+50 NP', color: 'from-primary/40 to-cyan-500/40' },
-                          ].map((act, i) => (
-                            <div key={i} className="flex items-center justify-between p-3.5 rounded-2xl bg-white/5 border border-white/5 transition-colors hover:bg-white/10">
-                              <div className="flex items-center gap-4">
-                                <div className={`w-11 h-11 rounded-full bg-gradient-to-br ${act.color} flex items-center justify-center font-bold shadow-inner`}>
-                                  {act.user.charAt(0)}
-                                </div>
-                                <div>
-                                  <p className="font-bold text-sm tracking-tight">{act.user}</p>
-                                  <p className="text-xs text-onSurfaceVariant mt-0.5">{act.action}</p>
-                                </div>
-                              </div>
-                              <div className="text-right">
-                                <p className={`font-mono font-bold text-sm ${act.pts.startsWith('+') ? 'text-primary drop-shadow-[0_0_8px_rgba(25,204,240,0.5)]' : 'text-[#f0a219] drop-shadow-[0_0_8px_rgba(240,162,25,0.5)]'}`}>{act.pts}</p>
-                                <p className="text-[10px] uppercase tracking-wider text-onSurfaceVariant mt-1">{act.time}</p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                    </div>
-
-                    <div className="glass-card cyber-border p-6 rounded-[24px] flex flex-col bg-gradient-to-br from-white/[0.02] to-transparent">
-                        <div className="flex justify-between items-center mb-6">
-                           <h3 className="text-lg font-bold">Desafíos Activos</h3>
-                        </div>
-                        <div className="flex flex-col gap-4">
-                          <div className="p-5 rounded-2xl border border-primary/20 bg-primary/5 relative overflow-hidden group hover:border-primary/40 transition-colors">
-                            <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
-                              <Sparkles className="w-16 h-16 text-primary" />
-                            </div>
-                            <h4 className="font-bold text-sm text-primary mb-1 relative z-10">Explorador Nocturno</h4>
-                            <p className="text-xs text-onSurfaceVariant mb-4 relative z-10">Visitas después de las 20hs suman el doble de Nubo Points.</p>
-                            <div className="flex justify-between items-end relative z-10">
-                              <div className="flex flex-col">
-                                <span className="text-3xl font-black font-mono tracking-tighter text-white">42</span>
-                                <span className="text-[10px] uppercase font-bold text-primary tracking-wider mt-1">Participantes</span>
-                              </div>
-                              <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-md font-medium">Activo</span>
-                            </div>
-                          </div>
-                          <div className="p-5 rounded-2xl border border-[#f0a219]/20 bg-[#f0a219]/5 relative overflow-hidden group hover:border-[#f0a219]/40 transition-colors">
-                            <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
-                              <Star className="w-16 h-16 text-[#f0a219]" />
-                            </div>
-                            <h4 className="font-bold text-sm text-[#f0a219] mb-1 relative z-10">Fidelidad Cervecera</h4>
-                            <p className="text-xs text-onSurfaceVariant mb-4 relative z-10">Premio automático (1 Pinta Gratis) a la 5ta visita validada.</p>
-                            <div className="flex justify-between items-end relative z-10">
-                               <div className="flex flex-col">
-                                  <span className="text-3xl font-black font-mono tracking-tighter text-white">18</span>
-                                  <span className="text-[10px] uppercase font-bold text-[#f0a219] tracking-wider mt-1">Completados</span>
-                               </div>
-                               <span className="text-xs bg-[#f0a219]/20 text-[#f0a219] px-2 py-1 rounded-md font-medium">Activo</span>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

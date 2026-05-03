@@ -9,11 +9,12 @@ import { PrizesShowcase, CommunityRanking, PassportSection, MerchantsSection, FA
 import { ComingSoonModal } from './components/ComingSoonModal';
 import { AboutModal } from './components/AboutModal';
 import { MerchantDashboard } from './components/MerchantDashboard';
+import { MerchantLanding } from './components/MerchantLanding';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
-  const [view, setView] = useState<'landing' | 'merchant'>('landing');
+  const [view, setView] = useState<'landing' | 'merchant-landing' | 'merchant-dashboard'>('landing');
 
   const handleCTA = () => {
     setIsModalOpen(true);
@@ -23,20 +24,24 @@ export default function App() {
     setIsAboutModalOpen(true);
   };
 
-  if (view === 'merchant') {
-    return <MerchantDashboard onLogout={() => setView('landing')} />;
+  if (view === 'merchant-dashboard') {
+    return <MerchantDashboard onLogout={() => setView('merchant-landing')} />;
+  }
+
+  if (view === 'merchant-landing') {
+    return <MerchantLanding onAccessDashboard={() => setView('merchant-dashboard')} onBack={() => setView('landing')} />;
   }
 
   return (
     <div className="min-h-screen bg-bgDark text-onSurface relative overflow-x-hidden">
-      <Nav onCTA={handleCTA} onMerchantLogin={() => setView('merchant')} />
+      <Nav onCTA={handleCTA} onMerchantLogin={() => setView('merchant-landing')} />
       <Hero onCTA={handleCTA} />
       <HowItWorks />
       <PointSystem />
       <PrizesShowcase />
       <CommunityRanking />
       <PassportSection />
-      <MerchantsSection />
+      <MerchantsSection onAccessDashboard={() => setView('merchant-dashboard')} onMerchantLanding={() => setView('merchant-landing')} />
       <FAQ />
       <LeadCaptureSection />
       <FinalCTA onCTA={handleCTA} />
