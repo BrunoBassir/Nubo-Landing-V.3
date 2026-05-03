@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Hero, HowItWorks, PointSystem } from './components/Sections';
-import { PrizesShowcase, CommunityRanking, PassportSection, MerchantsSection, FAQ, LeadCaptureSection, FinalCTA, Footer, Nav } from './components/MoreSections';
+import { PrizesShowcase, CommunityRanking, PassportSection, MerchantsSection, FAQ, LeadCaptureSection, FinalCTA, Footer, Nav, ComparisonSection } from './components/MoreSections';
 import { ComingSoonModal } from './components/ComingSoonModal';
 import { AboutModal } from './components/AboutModal';
 import { MerchantDashboard } from './components/MerchantDashboard';
@@ -44,6 +44,7 @@ export default function App() {
       <PointSystem />
       <PrizesShowcase />
       <CommunityRanking />
+      <ComparisonSection />
       <PassportSection />
       <MerchantsSection onAccessDashboard={() => setView('merchant-dashboard')} onMerchantLanding={() => setView('merchant-landing')} />
       <FAQ />
