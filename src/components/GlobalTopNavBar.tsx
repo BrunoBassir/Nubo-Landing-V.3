@@ -33,14 +33,6 @@ export function GlobalTopNavBar() {
       </div>
       
       <div className="flex items-center justify-end gap-3 relative z-10 w-1/3">
-        <div className="hidden sm:flex items-center gap-1 px-2 py-1 rounded bg-white/5 border border-white/10 text-xs font-medium text-slate-300 hover:bg-white/10 cursor-pointer transition-colors">
-          <span className="material-symbols-outlined text-[14px]">language</span>
-          <select className="bg-transparent border-none outline-none cursor-pointer appearance-none outline-none text-[10px]">
-             <option value="es" className="bg-bgDark text-white">ES</option>
-             <option value="en" className="bg-bgDark text-white">EN</option>
-             <option value="pt" className="bg-bgDark text-white">PT</option>
-          </select>
-        </div>
         <button className="material-symbols-outlined text-primary cursor-pointer hover:text-cyan-300 transition-colors flex items-center justify-center text-[18px]">notifications</button>
       </div>
     </header>

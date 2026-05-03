@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Store, TrendingUp, Users, Target, ArrowRight, ChevronLeft, LayoutDashboard, QrCode, Megaphone, Activity, BarChart, Smartphone, Award, Star } from 'lucide-react';
+import { Store, TrendingUp, Users, Target, ArrowRight, ChevronLeft, LayoutDashboard, QrCode, Megaphone, Activity, BarChart, Smartphone, Award, Star, CheckCircle2, XCircle } from 'lucide-react';
 
 interface MerchantLandingProps {
   onAccessDashboard: () => void;
@@ -346,6 +346,84 @@ export function MerchantLanding({ onAccessDashboard, onBack }: MerchantLandingPr
           <div className="p-6 md:border-l border-white/10">
             <h3 className="text-xl font-bold text-white mb-2">3. Fidelizá</h3>
             <p className="text-sm text-slate-400">Canjeá recompensas automáticas en la app a los usuarios frecuentes.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparison Section */}
+      <section className="relative z-10 py-24 px-6 border-t border-white/5 bg-bgDeep">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.02] mix-blend-overlay pointer-events-none"></div>
+        <div className="absolute top-[0%] right-[0%] w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
+
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-display font-bold text-white mb-4">¿Por qué elegir Nubo?</h2>
+            <p className="text-slate-400">Compará nuestra plataforma con las alternativas tradicionales de marketing y fidelización.</p>
+          </div>
+
+          <div className="overflow-x-auto pb-6">
+            <div className="min-w-[700px] glass-card cyber-border rounded-3xl overflow-hidden p-1 shadow-[0_0_30px_rgba(25,204,240,0.05)]">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr>
+                    <th className="py-6 px-6 font-bold text-sm text-onSurfaceVariant tracking-wider uppercase border-b border-white/10 w-1/3">Características</th>
+                    <th className="py-6 px-6 text-center border-b border-white/10 relative">
+                       <div className="absolute inset-0 bg-primary/10 blur-xl rounded-t-3xl"></div>
+                       <img alt="NUBO" className="h-16 mx-auto object-contain drop-shadow-[0_0_15px_rgba(67,221,226,0.5)] brightness-125 relative z-10" src="https://lh3.googleusercontent.com/aida/ADBb0ujTO8OICi5dMqeWK-37zXjL6hSeOTulMvdrsKKR7Lv7fW8urGGZFy4hjQBQCW-bmlF-CYsXf4_O0ItQhwdM0ywSYtBX5yEVQNUNfY7zklBeOOxLw8wupr-o3Lf0Tu0agaQ2x5MT0tuSqiWXrkyFx_1fTiP7FwYTZTQvEuhfXtzMzEUTd3gPkulOP1Uqig7ZqBm7WpZN61bKigv5Qlb8FelxgNmMRRBpoA_yOhpNjTokkypSLIClOBqbZJwyiUC0I94KaJ2gE92bjw" />
+                    </th>
+                    <th className="py-6 px-6 font-bold text-sm text-center text-onSurfaceVariant tracking-wider uppercase border-b border-white/10">Redes/Ads Tradicionales</th>
+                    <th className="py-6 px-6 font-bold text-sm text-center text-onSurfaceVariant tracking-wider uppercase border-b border-white/10">Loyalty Propio (Tarjetas/App)</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  {[
+                    { feature: 'Garantiza tráfico físico', nubo: 'Sí', ads: 'No', loyalty: 'No' },
+                    { feature: 'Atrae clientes nuevos', nubo: 'Sí', ads: 'Depende la pauta', loyalty: 'No' },
+                    { feature: 'Fideliza actuales', nubo: 'Sí', ads: 'No', loyalty: 'Sí' },
+                    { feature: 'Métricas de visitantes', nubo: 'Sí', ads: 'Online solamente', loyalty: 'A veces' },
+                    { feature: 'Impulso de horas valle', nubo: 'Sí', ads: 'Difícil', loyalty: 'No' },
+                  ].map((row, i) => (
+                    <tr key={i} className="hover:bg-white/[0.02] transition-colors">
+                      <td className="py-5 px-6 font-medium text-white/90">{row.feature}</td>
+                      <td className="py-5 px-6 text-center relative font-medium group">
+                        <div className="absolute inset-x-0 inset-y-0 bg-primary/[0.03] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div className="relative z-10 flex items-center justify-center">
+                          {row.nubo === 'Sí' ? (
+                            <CheckCircle2 className="w-6 h-6 text-primary drop-shadow-[0_0_12px_rgba(67,221,226,0.8)]" />
+                          ) : row.nubo === 'No' ? (
+                            <XCircle className="w-6 h-6 text-red-500 drop-shadow-[0_0_12px_rgba(239,68,68,0.8)]" />
+                          ) : (
+                            <span className="text-primary font-bold text-[15px]">{row.nubo}</span>
+                          )}
+                        </div>
+                      </td>
+                      <td className="py-5 px-6 text-center text-slate-400 text-sm font-medium">
+                        <div className="flex items-center justify-center">
+                          {row.ads === 'Sí' ? (
+                            <CheckCircle2 className="w-5 h-5 text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
+                          ) : row.ads === 'No' ? (
+                            <XCircle className="w-5 h-5 text-red-500/80 drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
+                          ) : (
+                            <span>{row.ads}</span>
+                          )}
+                        </div>
+                      </td>
+                      <td className="py-5 px-6 text-center text-slate-400 text-sm font-medium">
+                        <div className="flex items-center justify-center">
+                          {row.loyalty === 'Sí' ? (
+                            <CheckCircle2 className="w-5 h-5 text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
+                          ) : row.loyalty === 'No' ? (
+                            <XCircle className="w-5 h-5 text-red-500/80 drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
+                          ) : (
+                            <span>{row.loyalty}</span>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
