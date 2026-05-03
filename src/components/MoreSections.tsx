@@ -849,10 +849,15 @@ export function Nav({ onCTA }: any) {
             }} className="text-sm text-onSurfaceVariant hover:text-primary transition-colors cursor-pointer">{l}</a>
           ))}
         </div>
-        <button onClick={onCTA} className="btn-primary px-5 h-10 rounded-full font-bold text-sm flex items-center gap-2 transition-all">
-          <span>Bajar app</span>
-          <ArrowRight className="w-5 h-5" />
-        </button>
+        <div className="flex items-center gap-4">
+          <button className="hidden sm:flex text-sm font-bold text-onSurfaceVariant hover:text-primary transition-colors border border-white/10 hover:border-primary/30 px-5 h-10 rounded-full items-center justify-center bg-white/5">
+            Acceso Comercios
+          </button>
+          <button onClick={onCTA} className="btn-primary px-5 h-10 rounded-full font-bold text-sm flex items-center gap-2 transition-all">
+            <span>Bajar app</span>
+            <ArrowRight className="w-5 h-5" />
+          </button>
+        </div>
       </div>
     </nav>
   );
