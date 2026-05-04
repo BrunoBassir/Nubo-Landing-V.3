@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'motion/react';
 import { User, Zap, Store, Medal, Sparkles, Star, Home, Compass, QrCode, Gift, Trophy, ArrowRight, Check, CheckCircle2, Flame, MapPin } from 'lucide-react';
 import { GlobalTopNavBar } from './GlobalTopNavBar';
-import { NuboLogo } from './NuboLogo';
 
 export function HeroMockup() {
   const [showSplash, setShowSplash] = useState(false);
@@ -31,14 +30,14 @@ export function HeroMockup() {
             transition={{ duration: 0.6, ease: "easeInOut" }}
             className="absolute inset-0 z-[100] flex items-center justify-center bg-[#0a1618]"
           >
-            <motion.div 
+            <motion.img 
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-[85%] max-w-[320px] drop-shadow-[0_0_30px_rgba(67,221,226,0.8)]"
-            >
-              <NuboLogo />
-            </motion.div>
+              src="/logo.png" 
+              alt="NUBO" 
+              className="w-[85%] max-w-[320px] h-auto drop-shadow-[0_0_30px_rgba(67,221,226,0.8)] brightness-125"
+            />
           </motion.div>
         )}
       </AnimatePresence>

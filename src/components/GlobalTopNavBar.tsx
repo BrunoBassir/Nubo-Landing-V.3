@@ -1,5 +1,4 @@
 import React from 'react';
-import { NuboLogo } from './NuboLogo';
 
 export function GlobalTopNavBar() {
   const user = {
@@ -30,7 +29,7 @@ export function GlobalTopNavBar() {
       </div>
       
       <div className="flex-1 flex justify-center items-center">
-        <NuboLogo className="h-10 w-auto drop-shadow-[0_0_12px_rgba(67,221,226,0.6)]" />
+        <img alt="NUBO" className="h-12 w-auto brightness-125 drop-shadow-[0_0_12px_rgba(67,221,226,0.6)]" src="/logo.png" />
       </div>
       
       <div className="flex items-center justify-end gap-3 relative z-10 w-1/3">

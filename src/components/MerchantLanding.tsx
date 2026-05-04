@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Store, TrendingUp, Users, Target, ArrowRight, ChevronLeft, LayoutDashboard, QrCode, Megaphone, Activity, BarChart, Smartphone, Award, Star, CheckCircle2, XCircle } from 'lucide-react';
-import { NuboLogo } from './NuboLogo';
 
 interface MerchantLandingProps {
   onAccessDashboard: () => void;
@@ -370,7 +369,7 @@ export function MerchantLanding({ onAccessDashboard, onBack }: MerchantLandingPr
                     <th className="py-6 px-6 font-bold text-sm text-onSurfaceVariant tracking-wider uppercase border-b border-white/10 w-1/3">Características</th>
                     <th className="py-6 px-6 text-center border-b border-white/10 relative">
                        <div className="absolute inset-0 bg-primary/10 blur-xl rounded-t-3xl"></div>
-                       <NuboLogo className="h-10 mx-auto drop-shadow-[0_0_15px_rgba(67,221,226,0.5)] relative z-10" />
+                       <img alt="NUBO" className="h-16 mx-auto object-contain drop-shadow-[0_0_15px_rgba(67,221,226,0.5)] brightness-125 relative z-10" src="/logo.png" />
                     </th>
                     <th className="py-6 px-6 font-bold text-sm text-center text-onSurfaceVariant tracking-wider uppercase border-b border-white/10">Redes/Ads Tradicionales</th>
                     <th className="py-6 px-6 font-bold text-sm text-center text-onSurfaceVariant tracking-wider uppercase border-b border-white/10">Loyalty Propio (Tarjetas/App)</th>

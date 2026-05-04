@@ -187,7 +187,7 @@ export function ComparisonSection() {
                     <th className="py-6 px-6 font-bold text-sm text-onSurfaceVariant tracking-wider uppercase border-b border-white/10 w-1/3">Características</th>
                     <th className="py-6 px-6 text-center border-b border-white/10 relative">
                        <div className="absolute inset-0 bg-primary/10 blur-xl rounded-t-3xl"></div>
-                       <img alt="NUBO" className="h-16 mx-auto object-contain drop-shadow-[0_0_15px_rgba(67,221,226,0.5)] brightness-125 relative z-10" src="https://lh3.googleusercontent.com/aida/ADBb0ujTO8OICi5dMqeWK-37zXjL6hSeOTulMvdrsKKR7Lv7fW8urGGZFy4hjQBQCW-bmlF-CYsXf4_O0ItQhwdM0ywSYtBX5yEVQNUNfY7zklBeOOxLw8wupr-o3Lf0Tu0agaQ2x5MT0tuSqiWXrkyFx_1fTiP7FwYTZTQvEuhfXtzMzEUTd3gPkulOP1Uqig7ZqBm7WpZN61bKigv5Qlb8FelxgNmMRRBpoA_yOhpNjTokkypSLIClOBqbZJwyiUC0I94KaJ2gE92bjw" />
+                       <img alt="NUBO" className="h-16 mx-auto object-contain drop-shadow-[0_0_15px_rgba(67,221,226,0.5)] brightness-125 relative z-10" src="/logo.png" />
                     </th>
                     <th className="py-6 px-6 font-bold text-sm text-center text-onSurfaceVariant tracking-wider uppercase border-b border-white/10">Loyalty Tradicional</th>
                     <th className="py-6 px-6 font-bold text-sm text-center text-onSurfaceVariant tracking-wider uppercase border-b border-white/10">Tarjetas de Crédito</th>
@@ -664,7 +664,7 @@ export function Footer({ onOpenAbout }: { onOpenAbout?: () => void }) {
         <ScrollReveal>
           <div className="flex flex-col items-center text-center mb-16">
             <div className="flex items-center justify-center mb-6 group cursor-pointer">
-              <img alt="NUBO" className="h-40 md:h-64 w-auto object-contain drop-shadow-[0_0_30px_rgba(67,221,226,0.8)] brightness-125 hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/ADBb0ujTO8OICi5dMqeWK-37zXjL6hSeOTulMvdrsKKR7Lv7fW8urGGZFy4hjQBQCW-bmlF-CYsXf4_O0ItQhwdM0ywSYtBX5yEVQNUNfY7zklBeOOxLw8wupr-o3Lf0Tu0agaQ2x5MT0tuSqiWXrkyFx_1fTiP7FwYTZTQvEuhfXtzMzEUTd3gPkulOP1Uqig7ZqBm7WpZN61bKigv5Qlb8FelxgNmMRRBpoA_yOhpNjTokkypSLIClOBqbZJwyiUC0I94KaJ2gE92bjw" />
+              <img alt="NUBO" className="h-40 md:h-64 w-auto object-contain drop-shadow-[0_0_30px_rgba(67,221,226,0.8)] brightness-125 hover:scale-105 transition-transform duration-500" src="/logo.png" />
             </div>
             <p className="text-onSurfaceVariant text-lg max-w-lg leading-relaxed">
               Convertí cada salida en una experiencia de juego. Descubrí, validá y ganá premios reales.
@@ -783,7 +783,7 @@ export function Nav({ onCTA, onMerchantLogin }: any) {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass-panel border-b border-white/5 py-2' : 'py-5'}`}>
       <div className="max-w-7xl mx-auto px-6 h-20 md:h-24 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2.5 group">
-          <img alt="NUBO" className="h-12 md:h-16 w-auto object-contain drop-shadow-[0_0_15px_rgba(67,221,226,0.5)] brightness-125 group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida/ADBb0ujTO8OICi5dMqeWK-37zXjL6hSeOTulMvdrsKKR7Lv7fW8urGGZFy4hjQBQCW-bmlF-CYsXf4_O0ItQhwdM0ywSYtBX5yEVQNUNfY7zklBeOOxLw8wupr-o3Lf0Tu0agaQ2x5MT0tuSqiWXrkyFx_1fTiP7FwYTZTQvEuhfXtzMzEUTd3gPkulOP1Uqig7ZqBm7WpZN61bKigv5Qlb8FelxgNmMRRBpoA_yOhpNjTokkypSLIClOBqbZJwyiUC0I94KaJ2gE92bjw" />
+          <img alt="NUBO" className="h-12 md:h-16 w-auto object-contain drop-shadow-[0_0_15px_rgba(67,221,226,0.5)] brightness-125 group-hover:scale-105 transition-transform" src="/logo.png" />
         </a>
         <div className="hidden md:flex items-center gap-8">
           {[
