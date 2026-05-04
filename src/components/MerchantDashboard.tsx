@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { QrCode, Ticket, Percent, LogOut, CheckCircle2, Circle, Store, Download, FileText, ChevronRight, LayoutDashboard, Settings, HelpCircle, Menu, X, Activity, FolderDown, User, MapPin, Clock, Phone, Instagram, Printer, ScanLine, Trophy, TrendingUp, Users, Target, Megaphone, BellRing, Rocket, Key, Shield, Mail, MessageSquare, Video, ExternalLink, Globe, Lightbulb } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { NuboLogo } from './NuboLogo';
 
 interface MerchantDashboardProps {
   onLogout: () => void;
@@ -104,7 +105,7 @@ export function MerchantDashboard({ onLogout }: MerchantDashboardProps) {
         className={`fixed inset-y-0 left-0 z-[70] w-64 glass-panel border-r border-white/5 flex flex-col transition-transform duration-300 lg:static lg:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <div className="h-16 flex items-center justify-between px-6 border-b border-white/5 shrink-0">
-          <img alt="NUBO" className="h-8 w-auto brightness-125 drop-shadow-[0_0_8px_rgba(67,221,226,0.5)]" src="https://lh3.googleusercontent.com/aida/ADBb0ujTO8OICi5dMqeWK-37zXjL6hSeOTulMvdrsKKR7Lv7fW8urGGZFy4hjQBQCW-bmlF-CYsXf4_O0ItQhwdM0ywSYtBX5yEVQNUNfY7zklBeOOxLw8wupr-o3Lf0Tu0agaQ2x5MT0tuSqiWXrkyFx_1fTiP7FwYTZTQvEuhfXtzMzEUTd3gPkulOP1Uqig7ZqBm7WpZN61bKigv5Qlb8FelxgNmMRRBpoA_yOhpNjTokkypSLIClOBqbZJwyiUC0I94KaJ2gE92bjw" />
+          <NuboLogo className="h-6 w-auto drop-shadow-[0_0_8px_rgba(67,221,226,0.5)]" />
           <button onClick={() => setIsSidebarOpen(false)} className="lg:hidden text-slate-400 hover:text-white">
             <X className="w-5 h-5" />
           </button>
