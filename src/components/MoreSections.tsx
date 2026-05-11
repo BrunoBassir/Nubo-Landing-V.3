@@ -790,8 +790,8 @@ export function Nav({ onCTA, onMerchantLogin }: any) {
           {[
             { l: 'Cómo funciona', target: '02 Cómo funciona' },
             { l: 'Premios', target: '04 Premios' },
-            { l: 'Comparativa', target: '06 Comparativa' },
             { l: 'Comunidad', target: '05 Comunidad' },
+            { l: 'Comparativa', target: '06 Comparativa' },
             { l: 'Comercios', target: '07 Comercios' },
             { l: 'FAQ', target: '08 FAQ' },
           ].map(({l, target}) => (
