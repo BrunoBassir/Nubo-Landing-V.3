@@ -1,3 +1,4 @@
+import { logoDataUrl } from '../logoData';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'motion/react';
 import { User, Zap, Store, Medal, Sparkles, Star, Home, Compass, QrCode, Gift, Trophy, ArrowRight, Check, CheckCircle2, Flame, MapPin } from 'lucide-react';
@@ -34,7 +35,7 @@ export function HeroMockup() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              src="/logo.png" 
+              src={logoDataUrl} 
               alt="NUBO" 
               className="w-[85%] max-w-[320px] h-auto drop-shadow-[0_0_30px_rgba(67,221,226,0.8)] brightness-125"
             />

@@ -1,3 +1,4 @@
+import { logoDataUrl } from '../logoData';
 import React, { useState } from 'react';
 import { Gift, Gavel, RefreshCw, PawPrint, FlaskConical, Sparkles, Store, Plus, Rocket, Star, Compass, AtSign, ArrowRight, Camera, Music, MapPin, Search, CheckCircle2, X, XCircle, TrendingUp, Users, QrCode, Award, ArrowUpRight } from 'lucide-react';
 import { PrizesMockup } from './PrizesMockup';
@@ -187,7 +188,7 @@ export function ComparisonSection() {
                     <th className="py-6 px-6 font-bold text-sm text-onSurfaceVariant tracking-wider uppercase border-b border-white/10 w-1/3">Características</th>
                     <th className="py-6 px-6 text-center border-b border-white/10 relative">
                        <div className="absolute inset-0 bg-primary/10 blur-xl rounded-t-3xl"></div>
-                       <img alt="NUBO" className="h-16 mx-auto object-contain drop-shadow-[0_0_15px_rgba(67,221,226,0.5)] brightness-125 relative z-10" src="/logo.png" />
+                       <img alt="NUBO" className="h-16 mx-auto object-contain drop-shadow-[0_0_15px_rgba(67,221,226,0.5)] brightness-125 relative z-10" src={logoDataUrl} />
                     </th>
                     <th className="py-6 px-6 font-bold text-sm text-center text-onSurfaceVariant tracking-wider uppercase border-b border-white/10">Loyalty Tradicional</th>
                     <th className="py-6 px-6 font-bold text-sm text-center text-onSurfaceVariant tracking-wider uppercase border-b border-white/10">Tarjetas de Crédito</th>

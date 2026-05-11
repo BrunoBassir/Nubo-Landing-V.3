@@ -1,3 +1,4 @@
+import { logoDataUrl } from '../logoData';
 import React from 'react';
 
 export function GlobalTopNavBar() {
@@ -29,7 +30,7 @@ export function GlobalTopNavBar() {
       </div>
       
       <div className="flex-1 flex justify-center items-center">
-        <img alt="NUBO" className="h-12 w-auto brightness-125 drop-shadow-[0_0_12px_rgba(67,221,226,0.6)]" src="/logo.png" />
+        <img alt="NUBO" className="h-12 w-auto brightness-125 drop-shadow-[0_0_12px_rgba(67,221,226,0.6)]" src={logoDataUrl} />
       </div>
       
       <div className="flex items-center justify-end gap-3 relative z-10 w-1/3">

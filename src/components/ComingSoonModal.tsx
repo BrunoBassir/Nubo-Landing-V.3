@@ -1,3 +1,4 @@
+import { logoDataUrl } from '../logoData';
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Rocket, Smartphone, Gamepad2, Sparkles } from 'lucide-react';
@@ -61,7 +62,7 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
               <div className="relative mb-6">
                 <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full"></div>
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-bgDeep border border-primary/30 flex items-center justify-center relative shadow-[0_0_30px_rgba(25,204,240,0.3)]">
-                  <img alt="NUBO" className="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-[0_0_8px_rgba(67,221,226,0.6)] brightness-125" src="/logo.png" />
+                  <img alt="NUBO" className="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-[0_0_8px_rgba(67,221,226,0.6)] brightness-125" src={logoDataUrl} />
                   <motion.div 
                     animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 2, repeat: Infinity }}
