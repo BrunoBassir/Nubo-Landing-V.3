@@ -504,7 +504,7 @@ export function FAQ() {
 
 export function LeadCaptureSection() {
   return (
-    <section data-screen-label="Captación de leads" className="section-pad relative overflow-hidden">
+    <section id="waitlist" data-screen-label="Captación de leads" className="section-pad relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <ScrollReveal>
           <div className="relative rounded-[32px] glass-card cyber-border overflow-hidden p-8 md:p-14 text-center">
@@ -521,53 +521,24 @@ export function LeadCaptureSection() {
               </div>
               
               <h2 className="font-bold tracking-tight mb-4" style={{fontSize: 'clamp(1.8rem, 4vw, 2.8rem)'}}>
-                Sé de los primeros en probar <span className="gradient-text glow-text">Nubo</span>
+                Convertite en un Explorador Fundador de <span className="gradient-text glow-text">Nubo</span>
               </h2>
               <p className="text-onSurfaceVariant text-lg max-w-lg mx-auto mb-8">
-                Estamos abriendo vacantes limitadas en nuevas ciudades. Sumate a la lista de espera para recibir beneficios exclusivos al lanzamiento.
+                Estamos preparando el primer grupo de Exploradores Fundadores de Nubo. Van a ser los primeros en probar la app, sumar puntos, desbloquear niveles y acceder a beneficios antes que nadie.
               </p>
               
-              <form onSubmit={(e: any) => {
-                  e.preventDefault();
-                  const email = e.target.elements.email.value.trim();
-                  if (!email) return;
-                  
-                  window.location.href = `mailto:hola@nubo.travel?subject=Acceso%20Anticipado%20-%20Nubo&body=Hola%2C%20quiero%20unirme%20a%20la%20lista%20de%20espera%20para%20el%20acceso%20anticipado.%0A%0AMi%20email%20es%3A%20${encodeURIComponent(email)}`;
-                  
-                  const btn = e.currentTarget.querySelector('button');
-                  if (btn) {
-                    const origText = btn.innerHTML;
-                    btn.innerHTML = '¡Te sumaste a la lista! 🚀';
-                    btn.style.backgroundColor = '#19ccf0';
-                    btn.style.color = '#0a1618';
-                    setTimeout(() => {
-                      btn.innerHTML = origText;
-                      btn.style.backgroundColor = '';
-                      btn.style.color = '';
-                      e.target.reset();
-                    }, 3000);
-                  }
-                }} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-              >
-                <div className="relative flex-1 group">
-                  <div className="absolute inset-0 bg-primary/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <input 
-                    name="email"
-                    required
-                    type="email" 
-                    placeholder="tu@email.com" 
-                    className="w-full relative z-10 px-6 py-4 rounded-xl bg-bgDeep border border-white/10 text-base focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)] h-14" 
-                  />
-                </div>
-                <motion.button 
+              <div className="flex justify-center mt-2 mb-4 px-4">
+                <motion.a 
+                  href="https://forms.gle/Xxja7HyzqEw98uxr6"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  type="submit" 
-                  className="btn-primary px-8 rounded-xl font-bold text-base h-14 shadow-[0_0_20px_rgba(25,204,240,0.2)] hover:shadow-[0_0_30px_rgba(25,204,240,0.4)] transition-shadow whitespace-nowrap"
+                  className="btn-primary px-10 flex items-center justify-center rounded-xl font-bold text-lg h-14 shadow-[0_0_20px_rgba(25,204,240,0.2)] hover:shadow-[0_0_30px_rgba(25,204,240,0.4)] transition-shadow whitespace-nowrap inline-flex w-full sm:w-auto"
                 >
                   Unirme a la lista
-                </motion.button>
-              </form>
+                </motion.a>
+              </div>
               <p className="text-[11px] text-onSurfaceVariant mt-4">
                 No hacemos spam. Prometemos solo escribirte cuando lleguemos a tu ciudad.
               </p>

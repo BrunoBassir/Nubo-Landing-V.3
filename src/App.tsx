@@ -21,7 +21,12 @@ export default function App() {
   }, [view]);
 
   const handleCTA = () => {
-    setIsModalOpen(true);
+    const el = document.getElementById('waitlist');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      setIsModalOpen(true);
+    }
   };
 
   const handleAbout = () => {
