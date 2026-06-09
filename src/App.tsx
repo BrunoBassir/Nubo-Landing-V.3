@@ -5,8 +5,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { Hero, HowItWorks, PointSystem } from './components/Sections';
-import { PrizesShowcase, CommunityRanking, PassportSection, MerchantsSection, FAQ, LeadCaptureSection, FinalCTA, Footer, Nav, ComparisonSection } from './components/MoreSections';
+import { PrizesShowcase, CommunityRanking, PassportSection, MerchantsSection, LeadCaptureSection, Footer, Nav, ComparisonSection } from './components/MoreSections';
 import { ComingSoonModal } from './components/ComingSoonModal';
+import { FAQModal } from './components/FAQModal';
 import { AboutModal } from './components/AboutModal';
 import { MerchantDashboard } from './components/MerchantDashboard';
 import { MerchantLanding } from './components/MerchantLanding';
@@ -14,6 +15,7 @@ import { MerchantLanding } from './components/MerchantLanding';
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
+  const [isFAQModalOpen, setIsFAQModalOpen] = useState(false);
   const [view, setView] = useState<'landing' | 'merchant-landing' | 'merchant-dashboard'>('landing');
 
   useEffect(() => {
@@ -52,12 +54,11 @@ export default function App() {
       <ComparisonSection />
       <PassportSection />
       <MerchantsSection onAccessDashboard={() => setView('merchant-dashboard')} onMerchantLanding={() => setView('merchant-landing')} />
-      <FAQ />
       <LeadCaptureSection />
-      <FinalCTA onCTA={handleCTA} />
-      <Footer onOpenAbout={handleAbout} />
+      <Footer onOpenAbout={handleAbout} onOpenFAQ={() => setIsFAQModalOpen(true)} />
       <ComingSoonModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <AboutModal isOpen={isAboutModalOpen} onClose={() => setIsAboutModalOpen(false)} />
+      <FAQModal isOpen={isFAQModalOpen} onClose={() => setIsFAQModalOpen(false)} />
     </div>
   );
 }

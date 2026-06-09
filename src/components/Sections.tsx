@@ -205,25 +205,24 @@ export function PointSystem() {
       <div className="absolute inset-0 dot-bg opacity-30 pointer-events-none" style={{maskImage: 'radial-gradient(ellipse at center, black 20%, transparent 75%)'}}></div>
 
       <div className="max-w-7xl mx-auto px-6 relative">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <ScrollReveal>
-              <div className="label-caps text-primary mb-3">DOMINÁ EL SISTEMA</div>
-              <h2 className="font-bold tracking-tight leading-[1.05]" style={{fontSize: 'clamp(2rem, 5vw, 3.6rem)'}}>
-                Dos monedas. <br/>
-                <span className="gradient-text">Un solo objetivo:</span> jugar la ciudad.
-              </h2>
-              <p className="text-onSurfaceVariant mt-5 text-lg leading-relaxed max-w-lg">
-                Cada visita validada te suma puntos. Algunos los gastás, otros te elevan de nivel para desbloquear beneficios reales.
-              </p>
-            </ScrollReveal>
+        <ScrollReveal className="text-center lg:text-left mb-12">
+          <div className="label-caps text-primary mb-3">DOMINÁ EL SISTEMA</div>
+          <h2 className="font-bold tracking-tight leading-[1.15]" style={{fontSize: 'clamp(2rem, 5vw, 3.6rem)'}}>
+            Dos monedas. <br className="hidden md:inline" /> <span className="gradient-text">Un solo objetivo:</span> <span className="whitespace-nowrap">jugar la ciudad.</span>
+          </h2>
+          <p className="text-onSurfaceVariant mt-4 text-base md:text-lg leading-relaxed max-w-3xl">
+            Cada visita validada te suma puntos. Algunos los gastás, otros te elevan de nivel para desbloquear beneficios reales.
+          </p>
+        </ScrollReveal>
 
-            <StaggerContainer className="mt-10 space-y-5">
-              <StaggerItem>
-                <motion.div whileHover={{ x: 5 }} className="relative group">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+          <div className="flex flex-col gap-6 justify-between h-full">
+            <StaggerContainer className="flex flex-col gap-6 h-full">
+              <StaggerItem className="flex-1">
+                <motion.div whileHover={{ x: 5 }} className="relative group h-full">
                   <div className="absolute -inset-0.5 bg-primary/20 rounded-2xl blur opacity-60 group-hover:opacity-100 group-hover:bg-primary/40 transition-all duration-300"></div>
-                  <div className="relative flex items-center gap-5 rounded-2xl glass-card py-5 px-6 ring-1 ring-primary/20 group-hover:ring-primary/50 transition-all bg-bgDeep/80">
-                    <div className="w-16 h-16 shrink-0 rounded-full bg-primary/15 border border-primary/40 flex items-center justify-center relative" style={{boxShadow: '0 0 20px rgba(25,204,240,0.3)'}}>
+                  <div className="relative flex items-center gap-5 rounded-2xl glass-card py-6 px-6 ring-1 ring-primary/20 group-hover:ring-primary/50 transition-all bg-bgDeep/80 h-full">
+                    <div className="w-16 h-16 shrink-0 rounded-full bg-primary/15 border border-primary/40 flex items-center justify-center relative shadow-[0_0_20px_rgba(25,204,240,0.3)]">
                       <div className="absolute inset-0 rounded-full bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <Coins className="text-primary w-8 h-8 relative z-10" />
                     </div>
@@ -232,17 +231,17 @@ export function PointSystem() {
                         <h3 className="text-xl font-bold">Nubo Points</h3>
                         <span className="text-primary font-black text-lg bg-primary/10 px-2 py-0.5 rounded-md">NP</span>
                       </div>
-                      <p className="text-onSurfaceVariant text-sm mt-1.5 leading-snug">La moneda canjeable. Usalos para vouchers, subastas y mystery boxes en comercios asociados.</p>
+                      <p className="text-onSurfaceVariant text-sm mt-2 leading-relaxed">La moneda canjeable. Usalos para canjear vouchers, participar de subastas y abrir mystery boxes en tus comercios asociados favoritos.</p>
                     </div>
                   </div>
                 </motion.div>
               </StaggerItem>
 
-              <StaggerItem>
-                <motion.div whileHover={{ x: 5 }} className="relative group">
+              <StaggerItem className="flex-1">
+                <motion.div whileHover={{ x: 5 }} className="relative group h-full">
                   <div className="absolute -inset-0.5 bg-secondary/20 rounded-2xl blur opacity-60 group-hover:opacity-100 group-hover:bg-secondary/40 transition-all duration-300"></div>
-                  <div className="relative flex items-center gap-5 rounded-2xl glass-card py-5 px-6 ring-1 ring-secondary/20 group-hover:ring-secondary/50 transition-all bg-bgDeep/80">
-                    <div className="w-16 h-16 shrink-0 rounded-full bg-secondary/15 border border-secondary/40 flex items-center justify-center relative" style={{boxShadow: '0 0 20px rgba(255,198,64,0.3)'}}>
+                  <div className="relative flex items-center gap-5 rounded-2xl glass-card py-6 px-6 ring-1 ring-secondary/20 group-hover:ring-secondary/50 transition-all bg-bgDeep/80 h-full">
+                    <div className="w-16 h-16 shrink-0 rounded-full bg-secondary/15 border border-secondary/40 flex items-center justify-center relative shadow-[0_0_20px_rgba(255,198,64,0.3)]">
                       <div className="absolute inset-0 rounded-full bg-secondary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <Zap className="text-secondary w-8 h-8 relative z-10" fill="currentColor" />
                     </div>
@@ -251,7 +250,7 @@ export function PointSystem() {
                         <h3 className="text-xl font-bold">Experience Points</h3>
                         <span className="text-secondary font-black text-lg bg-secondary/10 px-2 py-0.5 rounded-md">XP</span>
                       </div>
-                      <p className="text-onSurfaceVariant text-sm mt-1.5 leading-snug">Sumalos para subir de nivel — Aventurero, Héroe, Leyenda — y desbloquear desafíos exclusivos.</p>
+                      <p className="text-onSurfaceVariant text-sm mt-2 leading-relaxed">Sumalos para subir de nivel — Curioso, Viajero, Aventurero, Explorador y Trotamundos — y desbloquear desafíos urbanos y beneficios exclusivos.</p>
                     </div>
                   </div>
                 </motion.div>
@@ -259,52 +258,56 @@ export function PointSystem() {
             </StaggerContainer>
           </div>
 
-
-          <div className="relative">
-            <div className="glass-card rounded-3xl p-8 cyber-border relative overflow-hidden">
+          <div className="relative h-full">
+            <div className="glass-card rounded-3xl p-8 cyber-border relative overflow-hidden h-full flex flex-col justify-between">
               <div className="absolute -top-20 -right-20 w-60 h-60 bg-primary/15 rounded-full blur-3xl"></div>
 
-              <div className="flex items-center justify-between mb-6">
-                <div className="label-caps text-primary">RUTA DE NIVELES</div>
-                <div className="text-[11px] text-onSurfaceVariant">+12 desbloqueables</div>
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="label-caps text-primary">RUTA DE NIVELES</div>
+                  <div className="text-[11px] text-onSurfaceVariant">+12 desbloqueables</div>
+                </div>
+
+                <div className="space-y-1">
+                  {[
+                    { lvl: 1, name: 'CURIOSO', xp: '100 XP', perk: 'Comenzá a ganar puntos en tu ciudad', unlocked: true, color: '#19ccf0' },
+                    { lvl: 5, name: 'VIAJERO', xp: '1,000 XP', perk: 'Acceso a misiones diarias', unlocked: true, color: '#19ccf0' },
+                    { lvl: 15, name: 'AVENTURERO', xp: '3,000 XP', perk: 'Sorteos especiales · Vos estás acá', unlocked: true, color: '#19ccf0', current: true },
+                    { lvl: 25, name: 'EXPLORADOR', xp: '8,000 XP', perk: 'Mystery boxes premium · 1.5x NP', unlocked: false, color: '#f0a219' },
+                    { lvl: 40, name: 'TROTAMUNDOS', xp: '25,000 XP', perk: 'Eventos secretos y viajes VIP · 2x NP', unlocked: false, color: '#ffc640' },
+                  ].map((n, i) => (
+                    <div key={i} className="relative">
+                      <div className={`flex items-center gap-4 py-2 ${n.current ? 'pl-3 -mx-3 rounded-xl bg-primary/8 border border-primary/30' : ''}`}>
+                        <div className="relative shrink-0 text-center">
+                          <div className="w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm" style={{
+                            background: n.unlocked ? `linear-gradient(135deg, ${n.color}, ${n.color}88)` : 'rgba(30,40,42,0.6)',
+                            color: n.unlocked ? '#0a1618' : '#3c494d',
+                            boxShadow: n.current ? `0 0 15px ${n.color}66` : 'none'
+                          }}>
+                            {n.lvl}
+                          </div>
+                          {!n.unlocked && (
+                            <Lock className="absolute -top-1 -right-1 w-3 h-3 text-slate-400 bg-bgDark rounded-full p-0.5" />
+                          )}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2">
+                            <span className={`font-black tracking-wider text-[13px] ${n.unlocked ? '' : 'text-slate-600'}`} style={{color: n.unlocked && !n.current ? '#dde3e6' : (n.current ? n.color : '')}}>{n.name}</span>
+                            <span className={`text-[10px] label-caps ${n.unlocked ? 'text-onSurfaceVariant' : 'text-slate-700'}`}>{n.xp}</span>
+                          </div>
+                          <div className={`text-[11px] leading-tight mt-0.5 ${n.unlocked ? 'text-onSurfaceVariant' : 'text-slate-700'}`}>{n.perk}</div>
+                        </div>
+                        {n.current && (
+                          <span className="label-caps text-primary animate-pulse-soft" style={{fontSize:'9px'}}>VOS</span>
+                        )}
+                      </div>
+                      {i < 4 && <div className="ml-5 h-2 w-px bg-gradient-to-b from-white/10 to-transparent"></div>}
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {[
-                { lvl: 5, name: 'NÓMADA', xp: '500 XP', perk: 'Acceso a misiones diarias', unlocked: true, color: '#19ccf0' },
-                { lvl: 14, name: 'AVENTURERO', xp: '2,500 XP', perk: 'Subastas en vivo · Vos estás acá', unlocked: true, color: '#19ccf0', current: true },
-                { lvl: 25, name: 'HÉROE', xp: '7,000 XP', perk: 'Mystery boxes premium · 2x NP', unlocked: false, color: '#f0a219' },
-                { lvl: 40, name: 'LEYENDA', xp: '20,000 XP', perk: 'Eventos secretos · Trading market', unlocked: false, color: '#ffc640' },
-              ].map((n, i) => (
-                <div key={i} className="relative">
-                  <div className={`flex items-center gap-4 py-3 ${n.current ? 'pl-3 -mx-3 rounded-xl bg-primary/8 border border-primary/30' : ''}`}>
-                    <div className="relative shrink-0">
-                      <div className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-base" style={{
-                        background: n.unlocked ? `linear-gradient(135deg, ${n.color}, ${n.color}88)` : 'rgba(30,40,42,0.6)',
-                        color: n.unlocked ? '#0a1618' : '#3c494d',
-                        boxShadow: n.current ? `0 0 18px ${n.color}66` : 'none'
-                      }}>
-                        {n.lvl}
-                      </div>
-                      {!n.unlocked && (
-                        <Lock className="absolute -top-1 -right-1 w-3.5 h-3.5 text-slate-400 bg-bgDark rounded-full p-0.5" />
-                      )}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <span className={`font-black tracking-wider text-sm ${n.unlocked ? '' : 'text-slate-600'}`} style={{color: n.unlocked && !n.current ? '#dde3e6' : (n.current ? n.color : '')}}>{n.name}</span>
-                        <span className={`text-[10px] label-caps ${n.unlocked ? 'text-onSurfaceVariant' : 'text-slate-700'}`}>{n.xp}</span>
-                      </div>
-                      <div className={`text-[12px] leading-tight mt-0.5 ${n.unlocked ? 'text-onSurfaceVariant' : 'text-slate-700'}`}>{n.perk}</div>
-                    </div>
-                    {n.current && (
-                      <span className="label-caps text-primary animate-pulse-soft" style={{fontSize:'9px'}}>VOS</span>
-                    )}
-                  </div>
-                  {i < 3 && <div className="ml-6 h-3 w-px bg-gradient-to-b from-white/10 to-transparent"></div>}
-                </div>
-              ))}
-
-              <div className="mt-5 pt-5 border-t border-white/5">
+              <div className="mt-6 pt-5 border-t border-white/5">
                 <div className="flex justify-between text-[11px] mb-2">
                   <span className="text-onSurfaceVariant">Progreso al siguiente nivel</span>
                   <span className="text-primary font-bold">2,450 / 3,000 XP</span>

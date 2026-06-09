@@ -627,7 +627,7 @@ export function FinalCTA({ onCTA }: any) {
   );
 }
 
-export function Footer({ onOpenAbout }: { onOpenAbout?: () => void }) {
+export function Footer({ onOpenAbout, onOpenFAQ }: { onOpenAbout?: () => void, onOpenFAQ?: () => void }) {
   return (
     <footer className="relative border-t border-white/5 pt-16 pb-10 bg-bgDeep relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none mix-blend-overlay"></div>
@@ -678,6 +678,7 @@ export function Footer({ onOpenAbout }: { onOpenAbout?: () => void }) {
               ] },
               { t: 'Compañía', l: [
                 { text: 'Sobre Nubo', action: 'about', link: '#' }, 
+                { text: 'Preguntas Frecuentes', action: 'faq', link: '#' }, 
                 { text: 'Trabajá con nosotros', link: 'mailto:hola@nubo.travel' }, 
                 { text: 'Press kit', link: 'mailto:hola@nubo.travel' }, 
                 { text: 'Contacto', link: 'mailto:hola@nubo.travel' }
@@ -700,6 +701,11 @@ export function Footer({ onOpenAbout }: { onOpenAbout?: () => void }) {
                           if (it.action === 'about') {
                             e.preventDefault();
                             onOpenAbout?.();
+                            return;
+                          }
+                          if (it.action === 'faq') {
+                            e.preventDefault();
+                            onOpenFAQ?.();
                             return;
                           }
                           if (it.label) {
@@ -763,8 +769,6 @@ export function Nav({ onCTA, onMerchantLogin }: any) {
             { l: 'Premios', target: '04 Premios' },
             { l: 'Comunidad', target: '05 Comunidad' },
             { l: 'Comparativa', target: '06 Comparativa' },
-            { l: 'Comercios', target: '07 Comercios' },
-            { l: 'FAQ', target: '08 FAQ' },
           ].map(({l, target}) => (
             <a key={l} href={`#${target}`} onClick={(e) => {
               e.preventDefault();
