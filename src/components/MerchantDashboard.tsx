@@ -1,7 +1,7 @@
 import { logoDataUrl } from '../logoData';
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { QrCode, Ticket, Percent, LogOut, CheckCircle2, Circle, Store, Download, FileText, ChevronRight, LayoutDashboard, Settings, HelpCircle, Menu, X, Activity, FolderDown, User, MapPin, Clock, Phone, Instagram, Printer, ScanLine, Trophy, TrendingUp, Users, Target, Megaphone, BellRing, Rocket, Key, Shield, Mail, MessageSquare, Video, ExternalLink, Globe, Lightbulb } from 'lucide-react';
+import { QrCode, Ticket, Percent, LogOut, CheckCircle2, Circle, Store, Download, FileText, ChevronRight, LayoutDashboard, Settings, HelpCircle, Menu, X, Activity, FolderDown, User, MapPin, Clock, Phone, Instagram, Printer, ScanLine, Trophy, TrendingUp, Users, Target, Megaphone, BellRing, Rocket, Key, Shield, Mail, MessageSquare, Video, ExternalLink, Globe, Lightbulb, Info, Sparkles, AlertCircle } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 interface MerchantDashboardProps {
@@ -147,6 +147,26 @@ export function MerchantDashboard({ onLogout }: MerchantDashboardProps) {
         {/* Dynamic BG */}
         <div className="absolute top-0 inset-x-0 h-96 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none blur-3xl z-0" />
         
+        {/* Top Sticky Demo Banner */}
+        <div className="bg-gradient-to-r from-amber-500/20 via-amber-500/10 to-primary/20 border-b border-amber-500/30 px-4 py-2 text-xs text-amber-200 flex flex-wrap items-center justify-between gap-2 relative z-[55] shrink-0 backdrop-blur-md">
+          <div className="flex items-center gap-2.5 mx-auto sm:mx-0">
+            <span className="bg-amber-500/25 border border-amber-500/40 text-amber-300 font-extrabold px-2 py-0.5 rounded-full text-[10px] tracking-wider uppercase flex items-center gap-1 shrink-0">
+              <Sparkles className="w-3 h-3 text-amber-400" />
+              VERSIÓN DEMO
+            </span>
+            <span className="font-medium text-slate-200 text-center sm:text-left">
+              Este es un panel de demostración interactivo. Los datos y métricas no corresponden a la versión final de producción.
+            </span>
+          </div>
+          <a
+            href="mailto:hola@nubo.travel?subject=Consulta%20Portal%20Comercios"
+            className="hidden md:inline-flex items-center gap-1 font-semibold text-primary hover:text-white transition-colors underline decoration-primary/40 underline-offset-4 ml-auto text-[11px]"
+          >
+            <Info className="w-3.5 h-3.5" />
+            Solicitar acceso a versión final
+          </a>
+        </div>
+
         {/* Top Navbar specifically for Dashboard */}
         <nav className="h-16 glass-panel border-b border-white/5 px-6 flex items-center justify-between shrink-0 relative z-50">
           <div className="flex items-center gap-4">
@@ -176,6 +196,33 @@ export function MerchantDashboard({ onLogout }: MerchantDashboardProps) {
 
         <div className="flex-1 overflow-y-auto w-full p-6 relative z-10">
           <div className="max-w-6xl mx-auto space-y-8">
+
+            {/* Demo Notice Banner Card */}
+            <div className="glass-card rounded-2xl p-4 sm:p-5 border border-amber-500/30 bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-primary/10 relative overflow-hidden flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-[0_0_25px_rgba(245,158,11,0.1)]">
+              <div className="flex items-start sm:items-center gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0 text-amber-400 mt-0.5 sm:mt-0">
+                  <Sparkles className="w-5 h-5 animate-pulse" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                      DASHBOARD DEMO
+                    </span>
+                    <h3 className="text-sm sm:text-base font-bold text-white">Panel de Demostración del Comercio</h3>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
+                    Este portal es un prototipo de muestra interactivo para visualizar el funcionamiento de Nubo Comercios. Todos los datos, métricas y usuarios mostrados son ficticios y no representan la versión final.
+                  </p>
+                </div>
+              </div>
+              <a
+                href="mailto:hola@nubo.travel?subject=Contacto%20Comercio%20-%20Acceso%20Portal"
+                className="shrink-0 text-xs font-bold px-4 py-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30 hover:text-white transition-all flex items-center gap-1.5 w-full sm:w-auto justify-center"
+              >
+                <Info className="w-4 h-4" />
+                Consultar versión final
+              </a>
+            </div>
             
             {activeTab === 'dashboard' && (
               <>
