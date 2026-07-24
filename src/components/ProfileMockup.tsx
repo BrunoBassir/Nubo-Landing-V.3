@@ -6,7 +6,7 @@ export function ProfileMockup() {
   const activeUser = {
     displayName: 'Marcos Urrestarazu',
     photoURL: 'https://i.pravatar.cc/150?img=33',
-    email: 'explorador@nubo.app',
+    email: 'explorador@nuboapp.xyz',
     level: 14,
     points: '12.4k',
     visits: 48,

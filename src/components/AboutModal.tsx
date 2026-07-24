@@ -107,7 +107,7 @@ export function AboutModal({ isOpen, onClose }: AboutModalProps) {
               </div>
 
               <button onClick={() => {
-                  window.location.href = "mailto:hola@nubo.travel?subject=Hola%20Nubo";
+                  window.location.href = "mailto:hola@nuboapp.xyz?subject=Hola%20Nubo";
                   onClose();
                 }} 
                 className="w-full btn-primary py-4 rounded-xl font-bold tracking-wide flex items-center justify-center gap-2 group relative overflow-hidden"

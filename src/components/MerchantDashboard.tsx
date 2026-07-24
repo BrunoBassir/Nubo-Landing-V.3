@@ -1,7 +1,7 @@
 import { logoDataUrl } from '../logoData';
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { QrCode, Ticket, Percent, LogOut, CheckCircle2, Circle, Store, Download, FileText, ChevronRight, LayoutDashboard, Settings, HelpCircle, Menu, X, Activity, FolderDown, User, MapPin, Clock, Phone, Instagram, Printer, ScanLine, Trophy, TrendingUp, Users, Target, Megaphone, BellRing, Rocket, Key, Shield, Mail, MessageSquare, Video, ExternalLink, Globe, Lightbulb, Info, Sparkles, AlertCircle } from 'lucide-react';
+import { QrCode, Ticket, Percent, LogOut, CheckCircle2, Circle, Store, Download, FileText, ChevronRight, LayoutDashboard, Settings, HelpCircle, Menu, X, Activity, FolderDown, User, MapPin, Clock, Phone, Instagram, Printer, ScanLine, Trophy, TrendingUp, Users, Target, Megaphone, BellRing, Rocket, Key, Shield, Mail, MessageSquare, Video, ExternalLink, Globe, Lightbulb, Info, Sparkles, AlertCircle, Compass, Flame, Map, BarChart3, Award, ArrowUpRight, Eye, Layers, ShieldCheck } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 interface MerchantDashboardProps {
@@ -64,6 +64,47 @@ export function MerchantDashboard({ onLogout }: MerchantDashboardProps) {
     { name: '25-34', value: 45, color: '#f97316' },
     { name: '35-44', value: 15, color: '#34d399' },
     { name: '45+', value: 10, color: '#fbbf24' },
+  ];
+
+  const peakTimeSlots = [
+    { id: 'morning', slot: 'Mañana (08-12h)', label: 'Desayunos & Trabajo', validaciones: 38, pct: 15, female: 64, male: 32, other: 4, isPeak: false },
+    { id: 'noon', slot: 'Mediodía (12-15h)', label: 'Almuerzo Ejecutivo', validaciones: 54, pct: 22, female: 51, male: 45, other: 4, isPeak: false },
+    { id: 'afternoon', slot: 'Merienda (15-18h)', label: 'Café & Horas Valle', validaciones: 28, pct: 11, female: 58, male: 38, other: 4, isPeak: false, isValley: true },
+    { id: 'afteroffice', slot: 'After Office (18-22h)', label: 'Trago, Bar & Tapeo', validaciones: 105, pct: 42, female: 46, male: 50, other: 4, isPeak: true },
+    { id: 'night', slot: 'Noche (22-02h)', label: 'Cena & Trasnoche', validaciones: 25, pct: 10, female: 38, male: 58, other: 4, isPeak: false },
+  ];
+
+  const neighborhoodData = {
+    zoneName: 'Pichincha / Barrio Gastronómico',
+    totalExplorersInZone: '2,840 exploradores activos/sem',
+    capturedByMerchant: '250',
+    capturePercentage: '8.8%',
+    rankInZone: '#2 de 18 comercios',
+    peakDays: 'Viernes y Sábados (19:00 - 22:30hs)',
+    radiusBreakdown: [
+      { radius: '0 - 300m', label: 'Inmediaciones (Vecinos & Oficinas)', share: 45, count: 112, color: '#43dde2' },
+      { radius: '300m - 1km', label: 'Barrios aledaños', share: 38, count: 95, color: '#f59e0b' },
+      { radius: '+1km', label: 'Turistas & Exploradores distantes', share: 17, count: 43, color: '#10b981' },
+    ]
+  };
+
+  const rubroBenchmark = {
+    categoryName: 'Cafeterías de Especialidad & Bares',
+    zone: 'Pichincha / Centro',
+    sampleSize: '18 comercios similares',
+    position: '#2 en la zona',
+    metrics: [
+      { id: 'val', name: 'Validaciones Semanales', merchant: 250, avg: 165, top10: 310, unit: 'valid.', diff: '+51.5%', status: 'excellent' },
+      { id: 'ret', name: 'Retención (Clientes Recurrentes)', merchant: 42, avg: 29, top10: 48, unit: '%', diff: '+13.0%', status: 'excellent' },
+      { id: 'redeem', name: 'Tasa de Canje de Premios', merchant: 72, avg: 54, top10: 82, unit: '%', diff: '+18.0%', status: 'good' },
+      { id: 'valley', name: 'Tráfico Atraído en Horas Valle', merchant: 28, avg: 18, top10: 35, unit: 'valid.', diff: '+55.5%', status: 'excellent' },
+    ]
+  };
+
+  const recurrenceData = [
+    { type: '1ª Visita (Nuevos)', pct: 58, count: 145, color: '#19ccf0', desc: 'Conocieron tu local este mes gracias al mapa' },
+    { type: '2 a 4 Visitas (Recurrentes)', pct: 28, count: 70, color: '#f59e0b', desc: 'Regresan semanalmente acumulando XP' },
+    { type: '5+ Visitas (Fans Nubo VIP)', pct: 14, count: 35, color: '#10b981', desc: 'Clientes habituales y embajadores de marca' },
   ];
 
   const recentActivities = [
@@ -159,7 +200,7 @@ export function MerchantDashboard({ onLogout }: MerchantDashboardProps) {
             </span>
           </div>
           <a
-            href="mailto:hola@nubo.travel?subject=Consulta%20Portal%20Comercios"
+            href="mailto:hola@nuboapp.xyz?subject=Consulta%20Portal%20Comercios"
             className="hidden md:inline-flex items-center gap-1 font-semibold text-primary hover:text-white transition-colors underline decoration-primary/40 underline-offset-4 ml-auto text-[11px]"
           >
             <Info className="w-3.5 h-3.5" />
@@ -216,7 +257,7 @@ export function MerchantDashboard({ onLogout }: MerchantDashboardProps) {
                 </div>
               </div>
               <a
-                href="mailto:hola@nubo.travel?subject=Contacto%20Comercio%20-%20Acceso%20Portal"
+                href="mailto:hola@nuboapp.xyz?subject=Contacto%20Comercio%20-%20Acceso%20Portal"
                 className="shrink-0 text-xs font-bold px-4 py-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30 hover:text-white transition-all flex items-center gap-1.5 w-full sm:w-auto justify-center"
               >
                 <Info className="w-4 h-4" />
@@ -347,12 +388,284 @@ export function MerchantDashboard({ onLogout }: MerchantDashboardProps) {
                   </motion.div>
                 </div>
 
+                {/* NUEVO 1: Momentos del Día & Desglose de Género por Franja Horaria */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+                  {/* Left (2 cols): Hourly Validation Peaks & Gender Splits */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.45 }}
+                    className="lg:col-span-2 glass-card rounded-2xl p-6 border border-white/10 relative overflow-hidden"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <Clock className="w-5 h-5 text-primary" />
+                          <h3 className="text-xl font-display font-bold text-white">Horarios Pico & Género por Franja</h3>
+                        </div>
+                        <p className="text-sm text-slate-400 mt-1">
+                          Descubrí en qué horarios te visitan más y qué público predomina en cada momento.
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2 shrink-0">
+                        <span className="bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
+                          <Flame className="w-3.5 h-3.5 text-amber-400" />
+                          Pico: 18:00 - 22:00hs
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      {peakTimeSlots.map((item) => (
+                        <div 
+                          key={item.id} 
+                          className={`p-4 rounded-xl border transition-all ${
+                            item.isPeak 
+                              ? 'bg-primary/10 border-primary/30 shadow-[0_0_15px_rgba(25,204,240,0.1)]' 
+                              : item.isValley
+                              ? 'bg-amber-500/5 border-amber-500/20'
+                              : 'bg-white/5 border-white/5 hover:bg-white/10'
+                          }`}
+                        >
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                            <div className="flex items-center gap-2.5">
+                              <span className="text-sm font-bold text-white">{item.slot}</span>
+                              <span className="text-xs text-slate-400">• {item.label}</span>
+                              {item.isPeak && (
+                                <span className="bg-primary/20 text-primary border border-primary/40 text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
+                                  Pico Máximo
+                                </span>
+                              )}
+                              {item.isValley && (
+                                <span className="bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
+                                  Hora Valle (Oportunidad)
+                                </span>
+                              )}
+                            </div>
+                            <div className="flex items-center gap-2 text-xs">
+                              <span className="font-bold text-white">{item.validaciones} validaciones</span>
+                              <span className="text-slate-400">({item.pct}% del total)</span>
+                            </div>
+                          </div>
+
+                          {/* Progress bar of validations */}
+                          <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden mb-3">
+                            <div 
+                              className={`h-full rounded-full ${item.isPeak ? 'bg-primary shadow-[0_0_10px_rgba(25,204,240,0.6)]' : 'bg-slate-400'}`}
+                              style={{ width: `${(item.validaciones / 105) * 100}%` }}
+                            />
+                          </div>
+
+                          {/* Gender Distribution Pills for this slot */}
+                          <div className="flex items-center gap-4 text-xs pt-2 border-t border-white/5 flex-wrap">
+                            <span className="text-slate-400 text-[11px] font-medium">Demografía por Género:</span>
+                            <div className="flex items-center gap-1.5 bg-pink-500/10 border border-pink-500/20 px-2.5 py-0.5 rounded-full text-pink-300 font-semibold text-[11px]">
+                              <span>👩 Mujeres</span>
+                              <span className="font-bold text-white">{item.female}%</span>
+                            </div>
+                            <div className="flex items-center gap-1.5 bg-cyan-500/10 border border-cyan-500/20 px-2.5 py-0.5 rounded-full text-cyan-300 font-semibold text-[11px]">
+                              <span>👨 Hombres</span>
+                              <span className="font-bold text-white">{item.male}%</span>
+                            </div>
+                            <div className="flex items-center gap-1.5 bg-purple-500/10 border border-purple-500/20 px-2.5 py-0.5 rounded-full text-purple-300 font-semibold text-[11px]">
+                              <span>✨ Otros/NB</span>
+                              <span className="font-bold text-white">{item.other}%</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  {/* Right (1 col): Surroundings / Neighborhood Radar */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="glass-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between relative overflow-hidden"
+                  >
+                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-secondary/10 blur-[50px] rounded-full pointer-events-none" />
+
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-2">
+                          <Compass className="w-5 h-5 text-secondary" />
+                          <h3 className="text-lg font-display font-bold text-white">Tráfico del Barrio</h3>
+                        </div>
+                        <span className="text-[10px] font-bold bg-secondary/20 text-secondary border border-secondary/30 px-2.5 py-1 rounded-full uppercase">
+                          En Vivo
+                        </span>
+                      </div>
+
+                      <p className="text-xs text-slate-300 mb-5 leading-relaxed">
+                        Exploradores Nubo transitando en <span className="font-bold text-white">{neighborhoodData.zoneName}</span> en los últimos 7 días.
+                      </p>
+
+                      {/* Highlight numbers */}
+                      <div className="grid grid-cols-2 gap-3 mb-5">
+                        <div className="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                          <p className="text-[11px] text-slate-400 font-medium">Tránsito Cercano</p>
+                          <p className="text-lg sm:text-xl font-bold text-white mt-0.5">{neighborhoodData.totalExplorersInZone}</p>
+                        </div>
+                        <div className="p-3.5 rounded-xl bg-secondary/10 border border-secondary/20">
+                          <p className="text-[11px] text-secondary font-bold">Captación Local</p>
+                          <p className="text-lg sm:text-xl font-bold text-white mt-0.5">{neighborhoodData.capturePercentage}</p>
+                          <p className="text-[10px] text-slate-400">({neighborhoodData.capturedByMerchant} de {neighborhoodData.totalExplorersInZone.split(' ')[0]})</p>
+                        </div>
+                      </div>
+
+                      {/* Radius breakdown */}
+                      <div className="space-y-3">
+                        <p className="text-xs font-bold text-slate-300 uppercase tracking-wider">Procedencia de Exploradores</p>
+                        {neighborhoodData.radiusBreakdown.map((r, idx) => (
+                          <div key={idx} className="space-y-1">
+                            <div className="flex justify-between text-xs">
+                              <span className="text-slate-300 font-medium">{r.radius} <span className="text-slate-500">({r.label})</span></span>
+                              <span className="font-bold text-white">{r.share}%</span>
+                            </div>
+                            <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                              <div className="h-full rounded-full" style={{ width: `${r.share}%`, backgroundColor: r.color }} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-6 pt-4 border-t border-white/10 text-xs text-slate-400 flex items-center gap-2">
+                      <MapPin className="w-4 h-4 text-emerald-400 shrink-0" />
+                      <span>Días de mayor movimiento en la zona: <strong className="text-white">{neighborhoodData.peakDays}</strong></span>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* NUEVO 2: Comparativa Anónima con Comercios de Tu Mismo Rubro + Recurrencia */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+                  {/* Left (2 cols): Anonymous Sector Benchmark */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.55 }}
+                    className="lg:col-span-2 glass-card rounded-2xl p-6 border border-white/10"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <BarChart3 className="w-5 h-5 text-emerald-400" />
+                          <h3 className="text-xl font-display font-bold text-white">Comparativa Anónima con Tu Rubro</h3>
+                        </div>
+                        <p className="text-sm text-slate-400 mt-1">
+                          Rendimiento de tu comercio vs. promedio anónimo de <span className="text-slate-200 font-semibold">{rubroBenchmark.categoryName}</span> ({rubroBenchmark.zone}).
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2 shrink-0">
+                        <span className="bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
+                          <Award className="w-3.5 h-3.5 text-emerald-400" />
+                          {rubroBenchmark.position}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {rubroBenchmark.metrics.map((m) => (
+                        <div key={m.id} className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
+                          <div className="flex justify-between items-start">
+                            <span className="text-xs font-bold text-slate-300">{m.name}</span>
+                            <span className="bg-emerald-500/20 text-emerald-400 font-bold text-xs px-2 py-0.5 rounded-md border border-emerald-500/30">
+                              {m.diff} vs rubro
+                            </span>
+                          </div>
+
+                          <div className="flex items-baseline gap-2">
+                            <span className="text-2xl font-bold text-white">{m.merchant}</span>
+                            <span className="text-xs text-slate-400">{m.unit} tu local</span>
+                          </div>
+
+                          {/* Comparative visual bar */}
+                          <div className="space-y-1.5 pt-1">
+                            <div className="space-y-1">
+                              <div className="flex justify-between text-[11px]">
+                                <span className="text-primary font-bold">Tu Comercio</span>
+                                <span className="text-white font-bold">{m.merchant} {m.unit}</span>
+                              </div>
+                              <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+                                <div className="h-full bg-primary rounded-full" style={{ width: `${Math.min(100, (m.merchant / m.top10) * 100)}%` }} />
+                              </div>
+                            </div>
+
+                            <div className="space-y-1">
+                              <div className="flex justify-between text-[11px]">
+                                <span className="text-slate-400">Promedio Rubro</span>
+                                <span className="text-slate-400">{m.avg} {m.unit}</span>
+                              </div>
+                              <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                                <div className="h-full bg-slate-500 rounded-full" style={{ width: `${(m.avg / m.top10) * 100}%` }} />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-5 p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-between text-xs text-emerald-300">
+                      <div className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 shrink-0" />
+                        <span>Métricas anónimas agregadas de 18 comercios en tu zona. Tu información está protegida.</span>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Right (1 col): Loyalty & Retention Breakdown */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    className="glass-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="mb-4">
+                        <h3 className="text-lg font-display font-bold text-white flex items-center gap-2">
+                          <Users className="w-5 h-5 text-amber-400" />
+                          Fidelización de Clientes
+                        </h3>
+                        <p className="text-xs text-slate-400 mt-1">Nivel de recurrencia de tus exploradores este mes.</p>
+                      </div>
+
+                      <div className="space-y-4 my-4">
+                        {recurrenceData.map((item, idx) => (
+                          <div key={idx} className="p-3.5 rounded-xl bg-white/5 border border-white/5 space-y-1.5">
+                            <div className="flex justify-between items-center text-xs">
+                              <span className="font-bold text-white">{item.type}</span>
+                              <span className="font-bold text-white" style={{ color: item.color }}>{item.pct}% ({item.count})</span>
+                            </div>
+                            <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+                              <div className="h-full rounded-full" style={{ width: `${item.pct}%`, backgroundColor: item.color }} />
+                            </div>
+                            <p className="text-[11px] text-slate-400">{item.desc}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Estimated Revenue */}
+                    <div className="p-4 rounded-xl bg-gradient-to-r from-primary/10 to-emerald-500/10 border border-primary/20 space-y-1 mt-2">
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="text-slate-300 font-medium">Consumo Estimado Vía Nubo</span>
+                        <span className="text-emerald-400 font-bold text-xs bg-emerald-400/10 px-2 py-0.5 rounded">+18% vs mes ant.</span>
+                      </div>
+                      <p className="text-2xl font-display font-bold text-white">$2.450.000 ARS</p>
+                      <p className="text-[11px] text-slate-400">Basado en ticket promedio estimado de $9.800 ARS en 250 validaciones.</p>
+                    </div>
+                  </motion.div>
+                </div>
+
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
                   {/* Recent Activity */}
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
+                    transition={{ delay: 0.65 }}
                     className="lg:col-span-2 glass-card rounded-2xl p-6 border border-white/10"
                   >
                     <div className="flex items-center justify-between mb-6">
@@ -381,19 +694,19 @@ export function MerchantDashboard({ onLogout }: MerchantDashboardProps) {
                     </div>
                   </motion.div>
 
-                  {/* Demographic Analytics */}
+                  {/* Demographic Analytics (Age Groups) */}
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 }}
+                    transition={{ delay: 0.7 }}
                     className="glass-card rounded-2xl p-6 border border-white/10 flex flex-col"
                   >
                     <div className="mb-4">
                       <h3 className="text-xl font-display font-bold text-white flex items-center gap-2">
                         <Users className="w-5 h-5 text-primary" />
-                        Público
+                        Público por Edad
                       </h3>
-                      <p className="text-sm text-slate-400">Edades de tus visitantes</p>
+                      <p className="text-sm text-slate-400">Rango etario de tus visitantes</p>
                     </div>
                     
                     <div className="flex-1 flex flex-col justify-center">
@@ -1084,11 +1397,11 @@ export function MerchantDashboard({ onLogout }: MerchantDashboardProps) {
                       </form>
                       
                       <div className="mt-8 border-t border-white/10 pt-6">
-                        <a href="mailto:comercios@nubo.travel" className="flex items-center gap-3 text-sm text-slate-300 hover:text-white transition-colors group">
+                        <a href="mailto:hola@nuboapp.xyz" className="flex items-center gap-3 text-sm text-slate-300 hover:text-white transition-colors group">
                            <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
                              <Mail className="w-4 h-4" />
                            </div>
-                           comercios@nubo.travel
+                           hola@nuboapp.xyz
                         </a>
                       </div>
                     </div>

@@ -113,7 +113,7 @@ export function FAQModal({ isOpen, onClose }: FAQModalProps) {
               <span className="text-xs text-onSurfaceVariant">¿Tenés otra duda? Estamos listos para responderte</span>
               <button 
                 onClick={() => {
-                  window.location.href = "mailto:hola@nubo.travel?subject=Duda%20sobre%20Nubo";
+                  window.location.href = "mailto:hola@nuboapp.xyz?subject=Duda%20sobre%20Nubo";
                   onClose();
                 }}
                 className="w-full sm:w-auto btn-primary px-5 py-2.5 rounded-xl font-bold text-xs"

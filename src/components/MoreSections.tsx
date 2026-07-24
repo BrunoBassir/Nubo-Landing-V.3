@@ -644,15 +644,15 @@ export function Footer({ onOpenAbout, onOpenFAQ }: { onOpenAbout?: () => void, o
 
             <div className="mt-8 p-4 rounded-2xl bg-bgDark/50 border border-white/5 backdrop-blur-sm inline-block text-left">
               <div className="label-caps text-onSurfaceVariant mb-2 text-center">CONTACTO</div>
-              <a href="mailto:hola@nubo.travel?subject=Hola%20Nubo" className="flex items-center justify-center gap-3 group mb-2">
+              <a href="mailto:hola@nuboapp.xyz?subject=Hola%20Nubo" className="flex items-center justify-center gap-3 group mb-2">
                 <AtSign className="text-primary w-5 h-5 group-hover:rotate-12 transition-transform" />
-                <span className="text-base font-bold text-onSurface group-hover:text-primary transition-colors">hola@nubo.travel</span>
+                <span className="text-base font-bold text-onSurface group-hover:text-primary transition-colors">hola@nuboapp.xyz</span>
               </a>
               <form onSubmit={(e: any) => {
                 e.preventDefault();
                 const email = e.target.elements.email.value.trim();
                 if (!email) return;
-                window.location.href = `mailto:hola@nubo.travel?subject=Sumarme%20a%20Nubo&body=Hola%2C%20mi%20mail%20es%20${encodeURIComponent(email)}`;
+                window.location.href = `mailto:hola@nuboapp.xyz?subject=Sumarme%20a%20Nubo&body=Hola%2C%20mi%20mail%20es%20${encodeURIComponent(email)}`;
               }} className="flex gap-2 w-[350px] max-w-full mx-auto mt-3 focus-within:ring-2 ring-primary/20 rounded-xl transition-shadow">
                 <input name="email" type="email" placeholder="tu@email.com" className="flex-1 px-4 py-3 rounded-xl bg-bgDeep border border-white/10 text-sm focus:outline-none focus:border-primary/50 transition-colors" />
                 <motion.button 
@@ -679,9 +679,9 @@ export function Footer({ onOpenAbout, onOpenFAQ }: { onOpenAbout?: () => void, o
               { t: 'Compañía', l: [
                 { text: 'Sobre Nubo', action: 'about', link: '#' }, 
                 { text: 'Preguntas Frecuentes', action: 'faq', link: '#' }, 
-                { text: 'Trabajá con nosotros', link: 'mailto:hola@nubo.travel' }, 
-                { text: 'Press kit', link: 'mailto:hola@nubo.travel' }, 
-                { text: 'Contacto', link: 'mailto:hola@nubo.travel' }
+                { text: 'Trabajá con nosotros', link: 'mailto:hola@nuboapp.xyz' }, 
+                { text: 'Press kit', link: 'mailto:hola@nuboapp.xyz' }, 
+                { text: 'Contacto', link: 'mailto:hola@nuboapp.xyz' }
               ] },
               { t: 'Legal', l: [
                 { text: 'Términos', link: '#' }, 
@@ -730,7 +730,7 @@ export function Footer({ onOpenAbout, onOpenFAQ }: { onOpenAbout?: () => void, o
             <div className="flex items-center gap-4">
               {[
                 { i: Camera, href: 'https://instagram.com' },
-                { i: AtSign, href: 'mailto:hola@nubo.travel' },
+                { i: AtSign, href: 'mailto:hola@nuboapp.xyz' },
                 { i: Music, href: 'https://tiktok.com' },
               ].map(s => (
                 <motion.a 
